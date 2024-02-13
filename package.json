@@ -1,0 +1,42 @@
+{
+  "name": "create-project",
+  "version": "1.0.1",
+  "description": "Project Description",
+  "main": "index.js",
+  "engines": {
+    "node": ">=20.5.1"
+  },
+  "scripts": {
+    "build": "echo \"Warning: no build specified\" && exit 0",
+    "commit": "cz",
+    "release": "standard-version",
+    "prepare": "husky install",
+    "test": "echo \"Warning: no test specified\" && exit 0"
+  },
+  "keywords": [],
+  "author": "Name <email>",
+  "license": "ISC",
+  "private": true,
+  "repository": {
+    "url": "https://...",
+    "type": "git"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
+    "prettier": "3.1.0",
+    "standard-version": "^9.5.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}
