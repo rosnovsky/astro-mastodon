@@ -1,7 +1,7 @@
 {
-  "name": "create-project",
-  "version": "1.0.1",
-  "description": "Project Description",
+  "name": "astro-mastodon",
+  "version": "0.0.0",
+  "description": "🐘 🚀 Mastodon (ActivityPub) embeds and mentions for Astro websites",
   "main": "index.js",
   "engines": {
     "node": ">=20.5.1"
@@ -13,12 +13,18 @@
     "prepare": "husky install",
     "test": "echo \"Warning: no test specified\" && exit 0"
   },
-  "keywords": [],
-  "author": "Name <email>",
-  "license": "ISC",
+  "keywords": [
+    "mastodon",
+    "activitypub",
+    "astro",
+    "embeds",
+    "mentions"
+  ],
+  "author": "Art Rosnovsky <art@rosnovsky.us>",
+  "license": "MIT",
   "private": true,
   "repository": {
-    "url": "https://...",
+    "url": "git@github.com:rosnovsky/astro-mastodon.git",
     "type": "git"
   },
   "devDependencies": {
