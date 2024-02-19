@@ -1,5 +1,5 @@
-import { MastodonPost } from "../types.js";
-import { convertPostUrlToApiUrl } from "./convertors.js";
+import { MastodonPost } from "../types";
+import { convertPostUrlToApiUrl } from "./convertors";
 
 export const validateUrl = (url: string): boolean => {
   const sanitized = url.trim();

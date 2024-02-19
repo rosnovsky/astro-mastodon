@@ -1,6 +1,6 @@
 import assert from "node:assert";
-import { after, afterEach, describe, test } from "node:test";
-import { validateUrl, validateMastodon } from "./validators.js";
+import { describe, test } from "node:test";
+import { validateUrl, validateMastodon } from "./validators";
 
 describe("validators", (t) => {
   test("validateUrl", async (t) => {

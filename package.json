@@ -2,9 +2,10 @@
   "name": "astro-mastodon",
   "version": "0.0.0",
   "description": "🐘 🚀 Mastodon embeds and mentions for Astro websites",
-  "type": "module",
   "main": "index.js",
+  "type": "module",
   "module": "dist/MastodonEmbed.js",
+  "types": "dist/generateMastodonEmbed.d.ts",
   "exports": {
     ".": {
       "import": "./dist/MastodonEmbed.js",
@@ -15,7 +16,7 @@
     "node": ">=20.5.1"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "npx tailwindcss -i ./src/global.css -o ./src/output.css && tsc",
     "commit": "cz",
     "release": "standard-version",
     "prepare": "husky install",

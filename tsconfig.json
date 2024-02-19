@@ -2,6 +2,8 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
+    "types": ["node", "react"],
+    "lib": ["ESNext", "DOM"],
     "noEmit": false,
     "sourceMap": true,
     "removeComments": true,
@@ -9,8 +11,7 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "target": "ESNext",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Bundler",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

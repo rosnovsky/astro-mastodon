@@ -4,13 +4,12 @@
 
 // Where does rehype come into play? Does it, at all?
 
-import { MastodonEmbedOptions, MastodonPost } from "./types.js";
+import { MastodonEmbedOptions, MastodonPost } from "./types";
 import {
   convertPostUrlToApiUrl,
   convertResponseToData,
-} from "./utils/convertors.js";
-import { generateEmbedHtml } from "./utils/generateEmbedHtml.js";
-import { validateUrl, validateMastodon } from "./utils/validators.js";
+} from "./utils/convertors";
+import { validateUrl, validateMastodon } from "./utils/validators";
 
 const sizeOptions = "small" || "medium" || "large";
 
