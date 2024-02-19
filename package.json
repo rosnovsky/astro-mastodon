@@ -1,7 +1,7 @@
 {
   "name": "astro-mastodon",
   "version": "0.0.0",
-  "description": "🐘 🚀 Mastodon (ActivityPub) embeds and mentions for Astro websites",
+  "description": "🐘 🚀 Mastodon embeds and mentions for Astro websites",
   "main": "index.js",
   "engines": {
     "node": ">=20.5.1"
@@ -11,7 +11,7 @@
     "commit": "cz",
     "release": "standard-version",
     "prepare": "husky install",
-    "test": "echo \"Warning: no test specified\" && exit 0"
+    "test": "NODE_ENV=\"test\" node --no-warnings --require \"ts-node/register\" --test **/**/*.test.ts"
   },
   "keywords": [
     "mastodon",
@@ -30,6 +30,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
+    "@types/node": "^20.11.19",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",

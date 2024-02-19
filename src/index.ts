@@ -4,25 +4,60 @@
 
 // Where does rehype come into play? Does it, at all?
 
+import { MastodonEmbedOptions, MastodonPost } from "./types";
+import {
+  convertPostUrlToApiUrl,
+  convertResponseToData,
+} from "./utils/convertors";
+import { generateEmbedHtml } from "./utils/generateEmbedHtml";
+import { validateUrl, validateMastodon } from "./utils/validators";
+
+const sizeOptions = "small" || "medium" || "large";
+
 export const MastodonEmbed = async ({
   url,
   size,
-}: MastodonEmbedOptions): Promise<string> => {
-  // Validate URL
+}: MastodonEmbedOptions): Promise<string | null> => {
+  if (!url || typeof url !== "string") {
+    return null;
+  }
 
-  // Validate options
+  if (size && !size.includes(sizeOptions)) {
+    size = "medium";
+  }
 
-  // Build the full URL
+  const validUrl = validateUrl(url);
 
-  // Fetch the URL
-  const response = await fetch(url);
-  const data = (await response.json()) as MastodonPost;
+  if (!validUrl) {
+    return null;
+  }
 
-  // Use helper function to generate the HTML
+  const validMastodonUrl = await validateMastodon(url);
 
-  // Return the HTML
+  if (!validMastodonUrl) {
+    return null;
+  }
 
-  // Handle errors
+  const apiUrl = convertPostUrlToApiUrl(url);
 
-  return `<a href=${url}>Embed View: ${size ?? "medium"}</a>`;
+  if (!apiUrl) {
+    return null;
+  }
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = (await response.json()) as MastodonPost;
+
+    if (!data) {
+      return null;
+    }
+
+    const embedData = convertResponseToData(data);
+    const html = generateEmbedHtml(embedData);
+
+    return html;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 };
