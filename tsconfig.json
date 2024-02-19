@@ -3,13 +3,19 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "noEmit": false,
+    "sourceMap": true,
+    "removeComments": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
-  }
-  // ... include/exclude as necessary
+    "skipLibCheck": true,
+    "jsx": "react"
+  },
+  "exclude": ["node_modules"]
 }

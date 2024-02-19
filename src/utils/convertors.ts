@@ -1,5 +1,10 @@
-import { EmbedData, MastodonPost } from "../types";
+import { EmbedData, MastodonPost } from "../types.js";
 
+/**
+ * Function to convert a Mastodon post URL to an API URL.
+ * @param url - The URL of the Mastodon post.
+ * @returns The API URL for the Mastodon post or `null` if the URL is invalid.
+ */
 export const convertPostUrlToApiUrl = (url: string): string | null => {
   try {
     const postUrl = new URL(url);
@@ -21,6 +26,11 @@ export const convertPostUrlToApiUrl = (url: string): string | null => {
   }
 };
 
+/**
+ * Function to convert a Mastodon API response to embed data.
+ * @param response - The Mastodon API response.
+ * @returns The embed data for the Mastodon post or `null` if the response is invalid.
+ */
 export const convertResponseToData = (
   response: MastodonPost,
 ): EmbedData | null => {

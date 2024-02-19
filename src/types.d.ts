@@ -1,5 +1,5 @@
 interface MastodonEmbedOptions {
-  url: string;
+  url: URL | string;
   size?: "small" | "medium" | "large";
 }
 

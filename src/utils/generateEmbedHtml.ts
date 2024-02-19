@@ -1,5 +1,10 @@
-import { EmbedData } from "../types";
+import { EmbedData } from "../types.js";
 
+/**
+ * Function to generate an HTML embed for a Mastodon post from the embed data.
+ * @param embedData - The embed data for the Mastodon post.
+ * @returns The HTML embed for the Mastodon post or `null` if the embed data is invalid.
+ */
 export const generateEmbedHtml = (
   embedData: EmbedData | null,
 ): string | null => {
