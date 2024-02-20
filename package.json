@@ -2,10 +2,10 @@
   "name": "astro-mastodon",
   "version": "0.0.1",
   "description": "🐘 🚀 Mastodon embeds and mentions for Astro websites",
-  "main": "index.js",
+  "main": "dist/MastodonEmbed.js",
   "type": "module",
-  "module": "dist/MastodonEmbed.js",
-  "types": "dist/generateMastodonEmbed.d.ts",
+  "module": "./dist/MastodonEmbed.js",
+  "types": "./dist/generateMastodonEmbed.d.ts",
   "exports": {
     ".": {
       "import": "./dist/MastodonEmbed.js",
@@ -32,7 +32,6 @@
   ],
   "author": "Art Rosnovsky <art@rosnovsky.us>",
   "license": "MIT",
-  "private": true,
   "repository": {
     "url": "git@github.com:rosnovsky/astro-mastodon.git",
     "type": "git"

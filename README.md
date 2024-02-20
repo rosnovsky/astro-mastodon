@@ -25,7 +25,10 @@ In any `.astro` component, add
 import { MastodonEmbed } from 'astro-mastodon`
 ---
 
-<MastodonEmbed url="https://lounge.town/@rosnovsky/109860863149734322" />
+<MastodonEmbed
+  url="https://lounge.town/@rosnovsky/109860863149734322"
+  client:load
+/>
 ```
 
 ### Using witn MDX
@@ -53,8 +56,13 @@ import { MastodonEmbed } from "astro-mastodon";
 
 This is an example of an embedded Mastodon post:
 
-<MastodonEmbed url="https://lounge.town/@rosnovsky/109860863149734322" />
+<MastodonEmbed
+  url="https://lounge.town/@rosnovsky/109860863149734322"
+  client:load
+/>
 ```
+
+**Note**: `client:load` is temporarily required until I figure out how to generate embeds on build.
 
 ## Features
 
