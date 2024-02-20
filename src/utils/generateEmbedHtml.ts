@@ -1,4 +1,4 @@
-import { EmbedData } from "../types";
+import type { EmbedData } from "../types.d.ts";
 
 /**
  * Function to generate an HTML embed for a Mastodon post from the embed data.

@@ -1,4 +1,4 @@
-import { MastodonPost } from "../types";
+import type { MastodonPost } from "../types.d.ts";
 
 export const mastodonPost = {
   id: "109860863149734322",

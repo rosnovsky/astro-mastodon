@@ -20,7 +20,7 @@
     "commit": "cz",
     "release": "standard-version",
     "prepare": "husky install",
-    "test": "NODE_ENV=\"test\" node --no-warnings --require \"ts-node/register\" --test **/**/*.test.ts"
+    "test": "NODE_ENV=\"test\" node --no-warnings --require \"ts-node/register\" --loader=\"ts-node/esm\" --test **/**/*.test.ts"
   },
   "keywords": [
     "mastodon",
@@ -62,7 +62,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.334.0",
-    "preact": "^10.19.5",
     "react": "^18.2.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",

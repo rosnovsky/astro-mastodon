@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { EmbedData } from "./types";
-import { generateMastodonEmbed } from "./generateMastodonEmbed";
-import { Skeleton } from "./components/ui/skeleton";
+import type { EmbedData } from "./types.d.ts";
+import { generateMastodonEmbed } from "./generateMastodonEmbed.ts";
+import { Skeleton } from "./components/ui/skeleton.ts";
 import "../src/output.css";
 
 export const MastodonEmbed = ({ url }: { url: string }) => {

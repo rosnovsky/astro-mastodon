@@ -1,4 +1,4 @@
-import { EmbedData, MastodonPost } from "../types";
+import type { EmbedData, MastodonPost } from "../types.d.ts";
 
 /**
  * Function to convert a Mastodon post URL to an API URL.

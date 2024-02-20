@@ -1,6 +1,6 @@
 import assert from "node:assert";
 import { describe, test } from "node:test";
-import { convertPostUrlToApiUrl } from "./convertors";
+import { convertPostUrlToApiUrl } from "./convertors.ts";
 
 describe("convertors", (t) => {
   test("convertPostUrlToApiUrl", async (t) => {
