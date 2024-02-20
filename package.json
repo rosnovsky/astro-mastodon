@@ -33,7 +33,7 @@
   "author": "Art Rosnovsky <art@rosnovsky.us>",
   "license": "MIT",
   "repository": {
-    "url": "git@github.com:rosnovsky/astro-mastodon.git",
+    "url": "git+ssh://git@github.com/rosnovsky/astro-mastodon.git",
     "type": "git"
   },
   "devDependencies": {
