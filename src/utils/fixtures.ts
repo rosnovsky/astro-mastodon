@@ -32,7 +32,7 @@ export const mastodonPost = {
     id: "109363435781395161",
     username: "rosnovsky",
     acct: "rosnovsky",
-    display_name: "Art Rosnovsky",
+    display_name: "Art Rosnovsky!",
     locked: false,
     bot: false,
     discoverable: true,

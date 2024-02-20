@@ -8,8 +8,8 @@ import type { MastodonEmbedOptions, MastodonPost } from "./types.d.ts";
 import {
   convertPostUrlToApiUrl,
   convertResponseToData,
-} from "./utils/convertors.ts";
-import { validateUrl, validateMastodon } from "./utils/validators.ts";
+} from "./utils/convertors.js";
+import { validateUrl, validateMastodon } from "./utils/validators.js";
 
 const sizeOptions = "small" || "medium" || "large";
 

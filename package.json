@@ -1,6 +1,6 @@
 {
   "name": "astro-mastodon",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "🐘 🚀 Mastodon embeds and mentions for Astro websites",
   "main": "index.js",
   "type": "module",
@@ -17,6 +17,7 @@
   },
   "scripts": {
     "build": "npx tailwindcss -i ./src/global.css -o ./src/output.css && tsc",
+    "dev": "concurrently \"npx tailwindcss -i ./src/global.css -o ./src/output.css -w\" \"tsc -w\"",
     "commit": "cz",
     "release": "standard-version",
     "prepare": "husky install",
@@ -43,6 +44,7 @@
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.57",
     "commitizen": "^4.3.0",
+    "concurrently": "^8.2.2",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",

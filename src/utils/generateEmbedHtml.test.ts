@@ -1,9 +1,9 @@
 import assert from "node:assert";
 import { describe, test } from "node:test";
 
-import { generateEmbedHtml } from "./generateEmbedHtml.ts";
-import { mastodonPost, mastodonEmbed } from "./fixtures.ts";
-import { convertResponseToData } from "./convertors.ts";
+import { generateEmbedHtml } from "./generateEmbedHtml.js";
+import { mastodonPost, mastodonEmbed } from "./fixtures.js";
+import { convertResponseToData } from "./convertors.js";
 
 describe("generateEmbedHtml", (t) => {
   test("should return an HTML string with the correct data", async (t) => {
