@@ -85,6 +85,23 @@ interface MastodonAccount {
   }[];
 }
 
+// This appears to be a "oEmbed" kind of card for YouTube and other media.
+interface MediaCard {
+  title: string;
+  description: string;
+  image: string;
+  type: string;
+  author_name: string;
+  author_url: string;
+  provider_name: string;
+  provider_url: string;
+  html: string;
+  width: number;
+  height: number;
+  embed_url: string;
+  blurhash: string;
+}
+
 export interface MastodonPost {
   id: string;
   created_at: string;
@@ -120,7 +137,7 @@ export interface MastodonPost {
     url: string;
   }[];
   emojis: string[];
-  card: string | null;
+  card: MediaCard | null;
   poll: MastodonPoll | null;
 }
 

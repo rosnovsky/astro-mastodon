@@ -40,9 +40,7 @@ export function MastodonCard({ className, ...props }: CardProps) {
                 <p className="text-xs text-gray-600 my-0">@{data.username}</p>
               </div>
               <div className="w-12 text-right">
-                <a href={data.accountUrl} target="_blank">
-                  <MastodonLogo className="text-violet-700 hover:text-violet-900" />
-                </a>
+                <MastodonLogo className="text-violet-700 hover:text-violet-900" />
               </div>
             </div>
           </a>

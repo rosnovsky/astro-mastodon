@@ -42,10 +42,7 @@ export const convertResponseToData = (
     !response.account.username ||
     !response.account.display_name ||
     !response.account.avatar ||
-    !response.created_at ||
-    !response.favourites_count ||
-    !response.replies_count ||
-    !response.reblogs_count
+    !response.created_at
   ) {
     // temporary, until I figure out what items I can do without
     return null;

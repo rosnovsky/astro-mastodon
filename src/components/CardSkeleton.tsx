@@ -6,7 +6,7 @@ export const CardSkeleton = ({ className }: { className?: string }) => {
     <aside className="w-2/3 mx-auto">
       <div className="w-full h-full flex items-center justify-center px-5 py-5">
         <div className="w-full mx-auto rounded-lg border-2 border-violet-300  p-5 text-gray-800">
-          <a href={"#"} target="_blank" className=" no-underline p-0 m-0 ">
+          <a href={"#"} target="_blank" className=" no-underline p-0 m-0">
             <div className="w-full flex mb-4">
               <div className="w-14 h-14">
                 <img
@@ -22,9 +22,7 @@ export const CardSkeleton = ({ className }: { className?: string }) => {
                 <p className="text-xs text-gray-600 my-0">@johnmastodon</p>
               </div>
               <div className="w-12 text-right">
-                <a href={"#"} target="_blank">
-                  <MastodonLogo className="text-violet-700 hover:text-violet-900" />
-                </a>
+                <MastodonLogo className="text-violet-700 hover:text-violet-900" />
               </div>
             </div>
           </a>
