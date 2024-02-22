@@ -1,13 +1,13 @@
 import assert from "node:assert";
 import { describe, test } from "node:test";
-import { convertPostUrlToApiUrl } from "./convertors.js";
+import { convertMentionToApiUrl } from "./convertors.js";
 
 describe("convertors", (t) => {
-  test("convertPostUrlToApiUrl", async (t) => {
-    await t.test("should return a valid API URL", () => {
-      const postUrl = "https://lounge.town/@rosnovsky/109860863149734322";
+  test("convertMentionToApiUrl", async (t) => {
+    t.test("should return a URL string", () => {
+      const mention = "@rosnovsky@lounge.town:109860863149734322";
 
-      const apiUrl = convertPostUrlToApiUrl(postUrl);
+      const apiUrl = convertMentionToApiUrl(mention);
 
       assert.strictEqual(
         apiUrl,
@@ -15,12 +15,10 @@ describe("convertors", (t) => {
       );
     });
 
-    await t.test("should return null for invalid URLs", () => {
-      const postUrl = "https://lounge.town/@rosnovsky";
+    await t.test("should return null for invalid mentions", () => {
+      const mention = "@111@@wooord.com:123:2000";
 
-      const apiUrl = convertPostUrlToApiUrl(postUrl);
-
-      assert.strictEqual(apiUrl, null);
+      assert.equal(convertMentionToApiUrl(mention), null);
     });
   });
 });

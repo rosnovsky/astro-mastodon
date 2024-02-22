@@ -18,26 +18,7 @@ Install the package by running:
 pnpm add astro-mastodon
 ```
 
-In any `.astro` component, add
-
-```mdx
----
-import { MastodonEmbed } from 'astro-mastodon`
----
-
-<MastodonEmbed
-  url="https://lounge.town/@rosnovsky/109860863149734322"
-  client:load
-/>
-```
-
-### Using witn MDX
-
-Enable Astro [MDX integration](https://docs.astro.build/en/guides/integrations-guide/mdx/):
-
-```shell
-pnpm astro add mdx
-```
+### Using witn Markdown
 
 Install the package:
 
@@ -45,31 +26,48 @@ Install the package:
 pnpm add astro-mastodon
 ```
 
-In your MDX file, import the package and use it as you'd normally use an imported component:
+Update your `astro.config.mjs` file:
 
-```mdx
+```js
+// Other imports
+import { remarkMastodonEmbed } from "astro-mastodon";
+
+export default defineConfig({
+  // ...
+  markdown: {
+    remarkPlugins: [remarkMastodonEmbed],
+  },
+  vite: {
+    ssr: {
+      noExternal: ["astro-mastodon"],
+    },
+  },
+  // ...
+});
+```
+
+In your markdown file, add post "mention":
+
+```markdown
 ---
 title: Embeds FTW!
 ---
 
-import { MastodonEmbed } from "astro-mastodon";
-
 This is an example of an embedded Mastodon post:
 
-<MastodonEmbed
-  url="https://lounge.town/@rosnovsky/109860863149734322"
-  client:load
-/>
+`@rosnovsky@lounge.town:109860863149734322`
 ```
 
-**Note**: `client:load` is temporarily required until I figure out how to generate embeds on build.
+The anatomy of the embed is as follows:
+
+`@username@instance.domain:postId`
 
 ## Features
 
 - [x] Embed Mastodon posts in any Astro component
 - [x] Embed Mastodon posts in `mdx` [content](https://docs.astro.build/en/guides/content-collections/) files
-- [ ] Embeds are generated at build time (no client-side JavaScript)
+- [x] Embeds are generated at build time (no client-side JavaScript)
 - [ ] Install Astro Mastodon as [Astro Integration](https://astro.build/integrations/) with `astro add`
 - [ ] Embed profiles, polls, posts with media attachments
-- [ ] Embed all of the above in [plain `markdown` content](https://docs.astro.build/en/guides/markdown-content/)
+- [x] Embed all of the above in [plain `markdown` content](https://docs.astro.build/en/guides/markdown-content/)
 - [ ] Embed other ActivityPub post types (PeerTube videos, BookWyrm books, Pixelfed photos, etc)

@@ -1,38 +1,19 @@
-// How do I turn this into a package with correct types and exports? Is there anything specific to Astro that I need to do?
-
-// I also want to make it Astro-specific. Should it output HTML or should it output an Astro component?
-
-// Where does rehype come into play? Does it, at all?
-
 import type { MastodonEmbedOptions, MastodonPost } from "./types.d.ts";
 import {
-  convertPostUrlToApiUrl,
+  convertMentionToApiUrl,
   convertResponseToData,
 } from "./utils/convertors.js";
-import { validateUrl, validateMastodon } from "./utils/validators.js";
-
-const sizeOptions = "small" || "medium" || "large";
+import { validateMastodon } from "./utils/validators.js";
 
 /**
- * Function to generate an HTML embed for a Mastodon post.
- * The function returns `null` if the embed cannot be generated so that the caller can fall back to a link to the post (which most likely isn't a Mastodon post, doesn't exist, or is missing required data).
- * @param {MastodonEmbedOptions} options - The options for the Mastodon embed. Options include the URL of the Mastodon post and the size of the embed: `small`, `medium`, or `large`.
- * @returns {Promise<string | null>} - The HTML embed for the Mastodon post or `null` if embed cannot be generated.
+ * Function to fetch and generate Mastodon embed data.
+ * @param url {string} - The URL of the Mastodon post to fetch.
+ * @returns The embed data for the Mastodon post or `null` if the URL is invalid.
  */
 export const generateMastodonEmbed = async ({
   url,
-  size,
 }: MastodonEmbedOptions): Promise<any> => {
-  if (!url || typeof url !== "string") {
-    return null;
-  }
-
-  if (size && !size.includes(sizeOptions)) {
-    size = "medium";
-  }
-
-  const validUrl = validateUrl(url);
-  if (!validUrl) {
+  if (!url) {
     return null;
   }
 
@@ -42,12 +23,7 @@ export const generateMastodonEmbed = async ({
       return null;
     }
 
-    const apiUrl = convertPostUrlToApiUrl(url);
-    if (!apiUrl) {
-      return null;
-    }
-
-    const response = await fetch(apiUrl);
+    const response = await fetch(url);
     const data = (await response.json()) as MastodonPost;
 
     if (!data) {

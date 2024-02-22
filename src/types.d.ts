@@ -1,6 +1,5 @@
 interface MastodonEmbedOptions {
-  url: URL | string;
-  size?: "small" | "medium" | "large";
+  url: string;
 }
 
 interface MediaAttachment {

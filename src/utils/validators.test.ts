@@ -1,23 +1,10 @@
 import assert from "node:assert";
 import { describe, test } from "node:test";
-import { validateUrl, validateMastodon } from "./validators.js";
+import { validateMastodon } from "./validators.js";
 
 describe("validators", (t) => {
-  test("validateUrl", async (t) => {
-    await t.test("should return true for valid urls", () => {
-      assert.strictEqual(validateUrl("https://example.com"), true);
-    });
-
-    await t.test("should return false for invalid urls", () => {
-      assert.strictEqual(validateUrl("com"), false);
-      assert.strictEqual(validateUrl("example.1"), false);
-      assert.strictEqual(validateUrl(""), false);
-      assert.strictEqual(validateUrl("email@domain.com"), false);
-    });
-  });
-
   test("validateMastodon", async (t) => {
-    await t.test("should return true for valid Mastodon URLs", async () => {
+    await t.test("should return true for valid Mastodon mentions", async () => {
       const isMastodon = await validateMastodon(
         "https://lounge.town/api/v1/statuses/109860863149734322",
       );

@@ -1,32 +1,6 @@
 import type { EmbedData, MastodonPost } from "../types.d.ts";
 
 /**
- * Function to convert a Mastodon post URL to an API URL.
- * @param url - The URL of the Mastodon post.
- * @returns The API URL for the Mastodon post or `null` if the URL is invalid.
- */
-export const convertPostUrlToApiUrl = (url: string): string | null => {
-  try {
-    const postUrl = new URL(url);
-    const instanceUrl = new URL(postUrl.origin);
-    const postPart = postUrl.pathname;
-    const postParts = postPart.split("/");
-
-    if (postParts.length < 3) return null;
-
-    const postId = postParts.pop();
-
-    if (!postId || !postPart) return null;
-
-    const apiUrl = new URL(`/api/v1/statuses/${postId}`, instanceUrl);
-    return apiUrl.toString();
-  } catch (error) {
-    console.error("Error converting post URL to API URL: ", error);
-    return null;
-  }
-};
-
-/**
  * Function to convert a Mastodon API response to embed data.
  * @param response - The Mastodon API response.
  * @returns The embed data for the Mastodon post or `null` if the response is invalid.
@@ -71,4 +45,23 @@ export const convertResponseToData = (
     display_name,
     avatar,
   };
+};
+
+/**
+ * Function to convert a post "mention" in a post to a Mastodon API URL.
+ * @param mention - The mention to convert. Mention should be in the format `@username@instance.domain:postId`.
+ * @returns The Mastodon API URL for the post or `null` if the mention is invalid.
+ */
+export const convertMentionToApiUrl = (mention: string): string | null => {
+  try {
+    const parts = mention.split("@");
+    if (parts.length < 3) return null;
+    const [instance, postId] = parts[2].split(":");
+
+    const apiUrl = new URL(`/api/v1/statuses/${postId}`, `https://${instance}`);
+
+    return apiUrl.toString();
+  } catch (error) {
+    return null;
+  }
 };

@@ -760,3 +760,7 @@ video {
       rotate(var(--tw-exit-rotate, 0));
   }
 }
+
+.running {
+  animation-play-state: running;
+}
