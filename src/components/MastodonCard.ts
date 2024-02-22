@@ -1,5 +1,4 @@
 import type { EmbedData } from "../types.js";
-import "../output.css";
 
 export const mastodonCard = (data: EmbedData): string => {
   const date = new Date(data.created_at).toLocaleDateString("en-US", {

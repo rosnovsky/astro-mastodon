@@ -2,7 +2,6 @@ import { visit } from "unist-util-visit";
 import fs from "node:fs";
 import { mastodonCard } from "./components/MastodonCard.js";
 import { processMarkdownFiles } from "./utils/processMarkdownFiles.js";
-import "./output.css";
 import { convertMentionToApiUrl } from "./utils/convertors.js";
 
 // TODO: Move this to pre-build hook (Astro? Vite? Rollup?)

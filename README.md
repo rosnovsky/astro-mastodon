@@ -20,12 +20,6 @@ pnpm add astro-mastodon
 
 ### Using witn Markdown
 
-Install the package:
-
-```shell
-pnpm add astro-mastodon
-```
-
 Update your `astro.config.mjs` file:
 
 ```js
@@ -37,14 +31,11 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkMastodonEmbed],
   },
-  vite: {
-    ssr: {
-      noExternal: ["astro-mastodon"],
-    },
-  },
   // ...
 });
 ```
+
+Add `import "astro-mastodon/dist/output.css"` at the top of your post template file (e.g. `src/pages/blog/[slug]/index.astro`)
 
 In your markdown file, add post "mention":
 
