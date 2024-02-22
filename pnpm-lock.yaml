@@ -11,6 +11,12 @@ dependencies:
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
+  fast-glob:
+    specifier: ^3.3.2
+    version: 3.3.2
+  glob:
+    specifier: ^10.3.10
+    version: 10.3.10
   lucide-react:
     specifier: ^0.334.0
     version: 0.334.0(react@18.2.0)
@@ -23,9 +29,9 @@ dependencies:
   tailwindcss-animate:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.4.1)
-  ts-node:
-    specifier: ^10.9.2
-    version: 10.9.2(@types/node@20.11.19)(typescript@5.3.2)
+  unist-util-visit:
+    specifier: ^5.0.0
+    version: 5.0.0
 
 devDependencies:
   "@commitlint/cli":
@@ -67,6 +73,9 @@ devDependencies:
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1(ts-node@10.9.2)
+  ts-node:
+    specifier: ^10.9.2
+    version: 10.9.2(@types/node@20.11.19)(typescript@5.3.2)
 
 packages:
   /@alloc/quick-lru@5.2.0:
@@ -638,7 +647,6 @@ packages:
       {
         integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==,
       }
-    dev: true
 
   /@ungap/structured-clone@1.2.0:
     resolution:
@@ -5402,7 +5410,6 @@ packages:
       }
     dependencies:
       "@types/unist": 3.0.2
-    dev: true
 
   /unist-util-position-from-estree@2.0.0:
     resolution:
@@ -5449,7 +5456,6 @@ packages:
     dependencies:
       "@types/unist": 3.0.2
       unist-util-is: 6.0.0
-    dev: true
 
   /unist-util-visit@5.0.0:
     resolution:
@@ -5460,7 +5466,6 @@ packages:
       "@types/unist": 3.0.2
       unist-util-is: 6.0.0
       unist-util-visit-parents: 6.0.1
-    dev: true
 
   /universalify@2.0.1:
     resolution:

@@ -25,7 +25,7 @@ export const validateMastodon = async (url: string): Promise<boolean> => {
     const response = await fetch(apiUrl);
 
     const data = await response.json();
-    console.log("MastodonPost", (data satisfies MastodonPost) ? true : false);
+
     return (data satisfies MastodonPost) ? true : false;
   } catch (error) {
     return false;
