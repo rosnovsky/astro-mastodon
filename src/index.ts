@@ -18,7 +18,7 @@ export const remarkMastodonEmbed = () => {
           type: "html",
           value: html,
         };
-        console.log("Children of parent of the Node", parent);
+        parent.children.splice(index, 1, newNode);
       }
     });
   };
