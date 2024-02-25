@@ -36,7 +36,8 @@
     "astro",
     "embeds",
     "mentions",
-    "withastro"
+    "withastro",
+    "astro-integration"
   ],
   "author": "Art Rosnovsky <art@rosnovsky.us>",
   "license": "MIT",
