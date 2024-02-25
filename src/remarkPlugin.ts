@@ -1,7 +1,6 @@
 import { visit } from "unist-util-visit";
 import fs from "node:fs";
 import { mastodonCard } from "./components/MastodonCard.js";
-import "./output.css";
 import { convertMentionToApiUrl } from "./utils/convertors.js";
 
 export const remarkMastodonEmbed = () => {
