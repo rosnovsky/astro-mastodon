@@ -1,4 +1,4 @@
-import type { AstroIntegration, AstroIntegrationLogger } from "astro";
+import type { AstroIntegration } from "astro";
 import { processMarkdownFiles } from "./utils/processMarkdownFiles.js";
 import { remarkMastodonEmbed } from "./remarkPlugin.js";
 import fs from "node:fs";
@@ -20,6 +20,7 @@ export default function astroMastodon(): AstroIntegration {
           if (event.includes(".md") || event.includes(".mdx")) {
             await processMarkdownFiles();
 
+            // TODO: this section is a hack to force a server to reflect updates. I couldn't find a way to trigger a HMR update from a plugin, but there _must_ be a way. Restarting the server is not ideal, at all.
             server.hot.send({
               type: "update",
               updates: [
@@ -53,7 +54,11 @@ export default function astroMastodon(): AstroIntegration {
       },
       "astro:build:done": ({ logger }) => {
         logger.info("Build step done");
-        fs.unlinkSync(".urls.json");
+        try {
+          fs.unlinkSync(".urls.json");
+        } catch (error: any) {
+          logger.error("Error cleaning up");
+        }
       },
     },
   };

@@ -9,34 +9,41 @@ import { convertMentionToApiUrl } from "./convertors.js";
  */
 export const processMarkdownFiles = async (): Promise<void> => {
   let urls: any = [];
-  const paths = await fg(["src/content/**/*.md", "src/content/**/*.mdx"]);
 
-  if (paths.length === 0) {
-    console.error("No markdown or MDX files found");
-    return;
-  }
+  try {
+    // TODO: make this more flexible, e.g. let the content path come from Astro config
+    const paths = await fg(["src/content/**/*.md", "src/content/**/*.mdx"]);
 
-  paths.forEach((path) => {
-    const content = fs.readFileSync(path, "utf8");
-    if (!content) {
-      console.error("No content found in", path);
+    if (paths.length === 0) {
+      console.error("No markdown or MDX files found");
       return;
     }
 
-    const regex = /@(.*?)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,}):(\d+)/;
-    let match = regex.exec(content);
+    paths.forEach((path) => {
+      const content = fs.readFileSync(path, "utf8");
+      if (!content) {
+        console.error("No content found in", path);
+        return;
+      }
 
-    if (match !== null) {
-      urls.push({ url: convertMentionToApiUrl(match[0]) });
+      const regex = /@(.*?)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,}):(\d+)/;
+      let match = regex.exec(content);
+
+      if (match !== null) {
+        urls.push({ url: convertMentionToApiUrl(match[0]) });
+      }
+    });
+
+    fs.writeFileSync(".urls.json", JSON.stringify(urls, null, 2));
+
+    const urlsToFetch = JSON.parse(fs.readFileSync(".urls.json", "utf8"));
+    for (let item of urlsToFetch) {
+      const data = await mastodonEmbed({ url: item.url });
+      item.embedData = data;
     }
-  });
-
-  fs.writeFileSync(".urls.json", JSON.stringify(urls, null, 2));
-
-  const urlsToFetch = JSON.parse(fs.readFileSync(".urls.json", "utf8"));
-  for (let item of urlsToFetch) {
-    const data = await mastodonEmbed({ url: item.url });
-    item.embedData = data;
+    fs.writeFileSync(".urls.json", JSON.stringify(urlsToFetch, null, 2));
+  } catch (error) {
+    console.error("Error processing markdown files", error);
+    return;
   }
-  fs.writeFileSync(".urls.json", JSON.stringify(urlsToFetch, null, 2));
 };
