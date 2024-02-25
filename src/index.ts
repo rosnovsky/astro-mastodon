@@ -1,39 +1,60 @@
-import { visit } from "unist-util-visit";
-import fs from "node:fs";
-import { mastodonCard } from "./components/MastodonCard.js";
+import type { AstroIntegration, AstroIntegrationLogger } from "astro";
 import { processMarkdownFiles } from "./utils/processMarkdownFiles.js";
-import { convertMentionToApiUrl } from "./utils/convertors.js";
+import { remarkMastodonEmbed } from "./remarkPlugin.js";
+import fs from "node:fs";
 
-// TODO: Move this to pre-build hook (Astro? Vite? Rollup?)
-processMarkdownFiles().catch(console.error);
+export { remarkMastodonEmbed };
 
-export const remarkMastodonEmbed = () => {
-  const urlsFile = fs.readFileSync(".urls.json", "utf8");
-  if (!urlsFile) {
-    throw new Error(
-      "No .urls.json file found. Please run `processMarkdownFiles` before running this plugin.",
-    );
-  }
-  const urlsData = JSON.parse(fs.readFileSync(".urls.json", "utf8"));
+export default function astroMastodon(): AstroIntegration {
+  return {
+    name: "astro-mastodon",
+    hooks: {
+      "astro:config:setup": async ({ logger }) => {
+        logger.info("Config setup");
+        logger.info("Processing markdown files");
+        await processMarkdownFiles();
+      },
+      "astro:server:setup": async ({ logger, server }) => {
+        logger.info("Server setup");
+        server.watcher.on("change", async (event, file) => {
+          if (event.includes(".md") || event.includes(".mdx")) {
+            await processMarkdownFiles();
 
-  return (tree: any) => {
-    visit(tree, (node: any, index: any, parent: any) => {
-      const regex = /@(.*?)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,}):(\d+)/;
-      const match = regex.exec(node.value);
-      if (!match) return;
-      const data = urlsData.find(
-        (item: any) => item.url === convertMentionToApiUrl(match[0]),
-      );
-      if (data) {
-        const html = mastodonCard(data.embedData);
-        const newNode = {
-          type: "html",
-          value: html,
-        };
-        parent.children.splice(index, 1, newNode);
-      }
-    });
-    // TODO: add this to Astro post-build hook
-    // fs.unlinkSync(".urls.json");
+            server.hot.send({
+              type: "update",
+              updates: [
+                {
+                  type: "js-update",
+                  path: event,
+                  acceptedPath: event,
+                  timestamp: Date.now(),
+                },
+                {
+                  type: "css-update",
+                  path: event,
+                  acceptedPath: event,
+                  timestamp: Date.now(),
+                },
+              ],
+            });
+            server.restart();
+          }
+        });
+      },
+      "astro:server:done": async ({ logger }) => {
+        logger.info("Server shutting down...");
+        logger.info("Cleaning up...");
+        fs.unlinkSync(".urls.json");
+      },
+      "astro:build:setup": async ({ logger }) => {
+        logger.info("Build step setup");
+        logger.info("Generating and validating Mastodon links...");
+        await processMarkdownFiles();
+      },
+      "astro:build:done": ({ logger }) => {
+        logger.info("Build step done");
+        fs.unlinkSync(".urls.json");
+      },
+    },
   };
-};
+}

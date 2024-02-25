@@ -10,7 +10,6 @@ import { convertMentionToApiUrl } from "./convertors.js";
 export const processMarkdownFiles = async (): Promise<void> => {
   let urls: any = [];
   const paths = await fg(["src/content/**/*.md", "src/content/**/*.mdx"]);
-  console.debug(paths.length, "files found");
 
   if (paths.length === 0) {
     console.error("No markdown or MDX files found");
@@ -28,7 +27,6 @@ export const processMarkdownFiles = async (): Promise<void> => {
     let match = regex.exec(content);
 
     if (match !== null) {
-      console.debug("Found ", match[0]);
       urls.push({ url: convertMentionToApiUrl(match[0]) });
     }
   });
@@ -42,5 +40,3 @@ export const processMarkdownFiles = async (): Promise<void> => {
   }
   fs.writeFileSync(".urls.json", JSON.stringify(urlsToFetch, null, 2));
 };
-
-processMarkdownFiles().catch(console.error);
