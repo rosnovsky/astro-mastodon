@@ -10,21 +10,17 @@ Easily embed Mastodon posts (and eventually other ActivityPub posts) into your A
 
 ## How to use
 
-### Use inside of Astro components
-
-Install the package by running:
+Install the package:
 
 ```shell
-pnpm add astro-mastodon
+pnpx astro add astro-mastodon
 ```
-
-### Using witn Markdown
 
 Update your `astro.config.mjs` file:
 
 ```js
 // Other imports
-import { remarkMastodonEmbed } from "astro-mastodon";
+import astroMastodon, { remarkMastodonEmbed } from "astro-mastodon";
 
 export default defineConfig({
   // ...
@@ -58,7 +54,7 @@ The anatomy of the embed is as follows:
 - [x] Embed Mastodon posts in any Astro component
 - [x] Embed Mastodon posts in `mdx` [content](https://docs.astro.build/en/guides/content-collections/) files
 - [x] Embeds are generated at build time (no client-side JavaScript)
-- [ ] Install Astro Mastodon as [Astro Integration](https://astro.build/integrations/) with `astro add`
+- [x] Install Astro Mastodon as [Astro Integration](https://astro.build/integrations/) with `astro add`
 - [ ] Embed profiles, polls, posts with media attachments
 - [x] Embed all of the above in [plain `markdown` content](https://docs.astro.build/en/guides/markdown-content/)
 - [ ] Embed other ActivityPub post types (PeerTube videos, BookWyrm books, Pixelfed photos, etc)

@@ -1,8 +1,9 @@
 {
+  // "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
-    "types": ["node", "react"],
+    "types": ["node"],
     "lib": ["ESNext", "DOM"],
     "noEmit": false,
     "sourceMap": true,
@@ -17,8 +18,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true,
-    "jsx": "react"
+    "skipLibCheck": true
   },
   "ts-node": {
     "esm": true

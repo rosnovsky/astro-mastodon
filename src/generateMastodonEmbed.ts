@@ -1,8 +1,5 @@
 import type { MastodonEmbedOptions, MastodonPost } from "./types.d.ts";
-import {
-  convertMentionToApiUrl,
-  convertResponseToData,
-} from "./utils/convertors.js";
+import { convertResponseToData } from "./utils/convertors.js";
 import { validateMastodon } from "./utils/validators.js";
 
 /**
@@ -20,6 +17,7 @@ export const generateMastodonEmbed = async ({
   try {
     const validMastodonUrl = await validateMastodon(url);
     if (!validMastodonUrl) {
+      console.error("Not a valid Mastodon URL", url);
       return null;
     }
 
@@ -27,6 +25,7 @@ export const generateMastodonEmbed = async ({
     const data = (await response.json()) as MastodonPost;
 
     if (!data) {
+      console.error("Not a valid Mastodon post", url);
       return null;
     }
 
