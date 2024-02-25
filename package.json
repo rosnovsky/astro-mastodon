@@ -1,6 +1,6 @@
 {
   "name": "astro-mastodon",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "🐘 🚀 Mastodon embeds and mentions for Astro websites",
   "main": "./dist/index.js",
   "type": "module",
