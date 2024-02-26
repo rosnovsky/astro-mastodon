@@ -1,6 +1,6 @@
 {
   "name": "astro-mastodon",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "🐘 🚀 Mastodon embeds and mentions for Astro websites",
   "main": "./dist/index.js",
   "type": "module",
@@ -46,6 +46,7 @@
     "type": "git"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.5.5",
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@types/node": "^20.11.19",
@@ -59,7 +60,6 @@
     "standard-version": "^9.5.0",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
-    "@astrojs/check": "^0.5.5",
     "typescript": "^5.3.3"
   },
   "config": {

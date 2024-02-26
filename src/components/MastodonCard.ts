@@ -8,17 +8,18 @@ export const mastodonCard = (data: EmbedData): string => {
   });
 
   return `
-    <aside class="w-full mx-auto">
-      <div class="w-full h-full flex items-center justify-center px-5 py-5">
-        <div class="w-full mx-auto rounded-lg border-2 border-violet-300 p-5 text-gray-800">
-          <a
-            href="${data.accountUrl}"
-            target="_blank"
-            class="flex w-full no-underline"
-          >
+    <aside class="min-w-72 max-w-2xl w-full sm:w-2xl mx-auto card">
+      <div class="w-full h-full flex items-center justify-center sm:p-5 p-0">
+        <div class="w-full mx-auto rounded-lg border-2 dark:border-violet-300 border-violet-800 p-5 text-slate-800">
+
             <div class="w-full flex justify-between mb-5">
-              <div class="flex w-1/3">
-                <div class="w-14 h-14">
+              <div class="flex flex-col sm:flex-row justify-center w-full ">
+              <a
+                  href="${data.accountUrl}"
+                  target="_blank"
+                  class="no-underline justify-center"
+                >
+                <div class="w-14 h-14 mx-auto">
                   <img
                     src="${data.avatar}"
                     alt="${data.display_name}"
@@ -26,13 +27,20 @@ export const mastodonCard = (data: EmbedData): string => {
                     height="100"
                     class="border-2 border-violet-700 object-cover w-full rounded-full"
                   />
-                </div>
-                <div class="w-full flex flex-col pl-3">
-                  <div class="my-0 font-bold">${data.display_name}</div>
-                  <div class="text-xs text-gray-600 my-0">@${data.username}</div>
+                  </div>
+                </a>
+                <div class="w-full flex flex-col pl-0 sm:pl-3 mx-auto ">
+                  <a
+                    href="${data.accountUrl}"
+                    target="_blank"
+                    class="no-underline text-center sm:text-left mx-auto sm:mx-0 hover:text-inherit"
+                  >
+                    <div class="mx-auto font-bold">${data.display_name}</div>
+                    <div class="mx-auto text-xs my-0">@${data.username}</div>
+                  </a>
                 </div>
               </div>
-              <div class="w-8 h-8 text-right text-violet-700">
+              <div class="hidden w-8 h-8 sm:block text-right text-violet-500 opacity-75 hover:opacity-100 hover:rotate-2">
                 <?xml version="1.0" encoding="UTF-8"?>
                   <svg width="32px" height="32px" class="icon-tabler" viewBox="-9 0 274 274" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
                       <g>
@@ -46,9 +54,8 @@ export const mastodonCard = (data: EmbedData): string => {
                 </svg>
               </div>
             </div>
-          </a>
           <div class="w-full mb-4">
-            <div class="prose prose-sm">
+            <div class="prose">
               ${data.content}
             </div>
           </div>
@@ -68,7 +75,7 @@ export const mastodonCard = (data: EmbedData): string => {
                   <span class="font-bold">${data.replies_count}</span>
                 </p>
               </div>
-              <a class="text-left sm:text-right underline" href="${data.url}" target="_blank">
+              <a class="text-center sm:text-right underline" href="${data.url}" target="_blank">
                 ${date}
               </a>
             </div>

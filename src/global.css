@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.card {
+  @apply bg-violet-100 bg-opacity-100 dark:bg-violet-950 dark:bg-opacity-20 !important;
+}
+
+.invisible {
+  @apply block !important;
+}
