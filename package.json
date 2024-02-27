@@ -46,8 +46,8 @@
     "type": "git"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.3",
-    "@commitlint/config-conventional": "^18.4.3",
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
     "@types/node": "^20.11.19",
     "astro": "^4.4.4",
     "commitizen": "^4.3.0",
