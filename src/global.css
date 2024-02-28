@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.card {
-  @apply bg-violet-100 bg-opacity-100 dark:bg-violet-950 dark:bg-opacity-20 !important;
+a {
+  @apply underline;
 }
 
-.invisible {
-  @apply block !important;
+p {
+  @apply block py-2;
 }

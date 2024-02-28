@@ -24,7 +24,7 @@
   },
   "scripts": {
     "build": "npx tailwindcss -i ./src/global.css -o ./dist/output.css && tsc",
-    "dev": "concurrently \"npx tailwindcss -i ./src/global.css -o ./dist/output.css -w\" \"tsc -w\"",
+    "dev": "concurrently \"npx tailwindcss -i ./src/global.css -o ./dist/output.css -w\" \"tsc -w\" \"astro dev\"",
     "commit": "cz",
     "release": "standard-version",
     "prepare": "husky install",
@@ -72,6 +72,7 @@
   },
   "dependencies": {
     "fast-glob": "^3.3.2",
+    "sanitize-html": "^2.12.1",
     "unist-util-visit": "^5.0.0"
   },
   "peerDependencies": {

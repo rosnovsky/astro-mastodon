@@ -1,0 +1,36 @@
+---
+import Card from '../components/Card.astro'
+import "../../dist/output.css"
+import { mastodonPost } from '../utils/fixtures'
+import { convertResponseToData } from '../utils/convertors'
+
+const cardData = {
+      "content": "<p>This is a post of <a href=\"https://lounge.town/tags/gratitude\" class=\"mention hashtag\" rel=\"tag\">#<span>gratitude</span></a> to <span class=\"h-card\" translate=\"no\"><a href=\"https://hachyderm.io/@molly0xfff\" class=\"u-url mention\">@<span>molly0xfff</span></a></span>, who single-handedly just turned yours truly into a <a href=\"https://lounge.town/tags/wikipedia\" class=\"mention hashtag\" rel=\"tag\">#<span>wikipedia</span></a> editor. Got my account and my first 6 edits (!!!!!! SIX, I can&#39;t stress this enough!!!): added citations, wikilinks, improved phrasing, etc.</p><p>Check this out, it&#39;s worth its bandwidth in gold: <a href=\"https://www.citationneeded.news/become-a-wikipedian-in-30-minutes/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"><span class=\"invisible\">https://www.</span><span class=\"ellipsis\">citationneeded.news/become-a-w</span><span class=\"invisible\">ikipedian-in-30-minutes/</span></a></p>",
+      "url": "https://lounge.town/@rosnovsky/111994284450336426",
+      "created_at": "2024-02-25T21:39:22.654Z",
+      "favourites_count": 1,
+      "replies_count": 1,
+      "reblogs_count": 0,
+      "accountUrl": "https://lounge.town/@rosnovsky",
+      "username": "rosnovsky",
+      "display_name": "Art Rosnovsky",
+      "avatar": "https://s3.us-west-1.wasabisys.com/lounge-town/accounts/avatars/109/363/435/781/395/161/original/a5032cbee1588e41.jpeg"
+    }
+
+type Props = {
+    accountUrl: string;
+    avatar: string;
+    created_at: string;
+    display_name: string;
+    username: string;
+    content: string;
+    favourites_count: number;
+    reblogs_count: number;
+    replies_count: number;
+    url: string;
+}
+
+---
+<div class="grid h-screen place-items-center bg-gray-300">
+  <Card data={cardData} />
+</div> 

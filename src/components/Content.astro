@@ -1,0 +1,17 @@
+---
+import sanitize from 'sanitize-html';
+
+const { data } = Astro.props;
+
+const content = sanitize(data.content, {
+  allowedTags: ['p', 'a', 'b', 'i', 'em', 'strong'],
+  allowedAttributes: {
+    a: ['href'],
+  },
+});
+
+console.log(content);
+---
+<div class="w-full my-6">
+  <div class="prose" set:html={content} />
+</div>

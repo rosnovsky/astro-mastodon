@@ -2,7 +2,7 @@
 
 > Work in Progress
 
-Easily embed Mastodon posts (and eventually other ActivityPub posts) into your Astro blog posts.
+Easily embed Mastodon posts into your Astro blog posts.
 
 ![Example in Dark Mode](./assets/example-dark.png)
 
@@ -49,12 +49,24 @@ The anatomy of the embed is as follows:
 
 `@username@instance.domain:postId`
 
+## Development
+
+Clone the repo and run
+
+```sh
+pnpm i
+pnpm dev
+```
+
+Open `http://localhost:4321` and have fun!
+
 ## Features
 
 - [x] Embed Mastodon posts in any Astro component
 - [x] Embed Mastodon posts in `mdx` [content](https://docs.astro.build/en/guides/content-collections/) files
+- [x] Embed posts in [plain `markdown` content](https://docs.astro.build/en/guides/markdown-content/)
 - [x] Embeds are generated at build time (no client-side JavaScript)
-- [x] Install Astro Mastodon as [Astro Integration](https://astro.build/integrations/) with `astro add`
+- [x] Install `Astro Mastodon` as [Astro Integration](https://astro.build/integrations/) with `astro add`
+- [ ] Handle embedded images, video, audio, OpenGraph previews, etc.
 - [ ] Embed profiles, polls, posts with media attachments
-- [x] Embed all of the above in [plain `markdown` content](https://docs.astro.build/en/guides/markdown-content/)
 - [ ] Embed other ActivityPub post types (PeerTube videos, BookWyrm books, Pixelfed photos, etc)

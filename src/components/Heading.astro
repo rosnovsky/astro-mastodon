@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import MastodonLogo from './MastodonLogo.astro';
+
+const { data } = Astro.props;
+---
+
+<div class="w-full flex justify-between">
+  <div class="flex flex-col sm:flex-row justify-center w-full no-underline">
+  <a
+      href={data.accountUrl}
+      target="_blank"
+      class="no-underline justify-center"
+    >
+    <div class="w-14 h-14 mx-auto">
+      <Image
+        src={data.avatar}
+        alt={data.display_name}
+        width="100"
+        height="100"
+        class="border-2 border-violet-700 object-cover w-full rounded-full"
+      />
+      </div>
+    </a>
+    <div class="w-full flex flex-col pl-0 sm:pl-3 mx-auto ">
+      <a
+        href={data.accountUrl}
+        target="_blank"
+        class="no-underline text-center sm:text-left mx-auto sm:mx-0 hover:text-inherit"
+      >
+        <div class="mx-auto font-bold">{data.display_name}</div>
+        <div class="mx-auto text-xs my-0">@{data.username}</div>
+      </a>
+    </div>
+  </div>
+  <MastodonLogo />
+</div>

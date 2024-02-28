@@ -1,0 +1,36 @@
+---
+const { data } = Astro.props;
+
+const date = new Date(data.created_at).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+  hour12: false,
+});
+
+const yep = `<span class="text-emerald-600">&checkmark;</span>`
+const nope = `<span class="text-slate-300">&checkmark;</span>`
+
+const hasReposts = data.reblogs_count > 0
+const hasReplies = data.replies_count > 0
+const hasFavs = data.favourites_count > 0
+
+const boosts = `${hasReposts ? `${yep} boosts` : `${nope} boosts`}`
+const replies = `${hasReplies ? `${yep} replies` : `${nope} replies`}`
+const favs = `${hasFavs ? `${yep} favs` : `${nope} favs`}`
+
+
+---
+<div class="w-full align-baseline">
+  <div class="flex w-full justify-between text-xs align-baseline text-slate-600 dark:text-slate-400 ">
+    <div class="w-48 flex justify-between">
+      <span class="inline-block" set:html={boosts} />
+      <span class="inline-block" set:html={replies} />
+      <span class="inline-block" set:html={favs} /></div>
+    <div>Posted on <a class="text-center sm:text-right underline" href={data.url} target="_blank">
+      {date}
+    </a></div>
+  </div>
+</div>
