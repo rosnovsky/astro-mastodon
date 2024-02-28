@@ -1,5 +1,11 @@
 ---
 import sanitize from 'sanitize-html';
+import Media from './Media.astro';
+import { EmbedData } from '../types';
+
+type Props = {
+  data: EmbedData;
+};
 
 const { data } = Astro.props;
 
@@ -10,8 +16,8 @@ const content = sanitize(data.content, {
   },
 });
 
-console.log(content);
 ---
 <div class="w-full my-6">
   <div class="prose" set:html={content} />
+  <Media attachments={data.media_attachments} card={data.card} />
 </div>

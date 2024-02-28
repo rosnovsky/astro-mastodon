@@ -86,6 +86,7 @@ interface MastodonAccount {
 
 // This appears to be a "oEmbed" kind of card for YouTube and other media.
 interface MediaCard {
+  url: string;
   title: string;
   description: string;
   image: string;
@@ -151,4 +152,6 @@ interface EmbedData {
   username: string;
   display_name: string;
   avatar: string;
+  media_attachments: MediaAttachment[] | null;
+  card: MediaCard | null;
 }

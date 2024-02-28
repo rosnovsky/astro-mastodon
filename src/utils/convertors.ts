@@ -30,6 +30,8 @@ export const convertResponseToData = (
     replies_count,
     reblogs_count,
     account,
+    media_attachments,
+    card,
   } = response;
   const { url: accountUrl, username, display_name, avatar } = account;
 
@@ -44,6 +46,8 @@ export const convertResponseToData = (
     username,
     display_name,
     avatar,
+    media_attachments,
+    card,
   };
 };
 

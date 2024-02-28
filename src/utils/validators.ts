@@ -1,5 +1,4 @@
 import type { MastodonPost } from "../types.d.ts";
-import { convertMentionToApiUrl } from "./convertors.js";
 
 /**
  * Function to validate that a URL points to a Mastodon post.

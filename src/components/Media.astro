@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets'
+import { EmbedData } from '../types';
+
+type Props = {
+  attachments: EmbedData['media_attachments'];
+  card: EmbedData['card'];
+};
+
+const { attachments, card } = Astro.props;
+
+console.log(card)
+---
+
+<div>
+  <div class=`w-full my-5 grid ${attachments!.length > 1 ? "grid-cols-2" : "grid-cols-1"} gap-4`>
+    {attachments!.map(media => (
+      <a href={media.url} target="_blank">
+        <Image src={media.url} alt={media.description} class="w-full" width="200" height="150" />
+      </a>
+    ))}
+  </div>
+  {card && <a class="no-underline flex flex-col justify-between dark:bg-slate-600 dark:bg-opacity-30 bg-blend-multiply p-5" href={card!.url}>
+    <Image src={card!.image} alt={card!.title} class="w-full" width={100} height={100}/>
+    <h1 class="text-xl font-bold">{card!.title}</h1>
+    <p class="prose">{card!.description}</p>
+    <p class="text-right text-sm text-gray-400">{card!.provider_name}</p>
+  </a>
+  }
+</div>

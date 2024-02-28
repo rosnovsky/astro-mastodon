@@ -2,6 +2,7 @@
 import Content from './Content.astro';
 import Heading from './Heading.astro';
 import Footer from './Footer.astro';
+import { EmbedData } from '../types';
 
 type Props = {
   data: {
@@ -15,6 +16,8 @@ type Props = {
     reblogs_count: number;
     replies_count: number;
     url: string;
+    media_attachments: EmbedData["media_attachments"];
+    card: EmbedData["card"];
   };
 };
 
