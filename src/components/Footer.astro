@@ -10,8 +10,8 @@ const date = new Date(data.created_at).toLocaleDateString("en-US", {
   hour12: false,
 });
 
-const yep = `<span class="text-emerald-600">&checkmark;</span>`
-const nope = `<span class="text-slate-300">&checkmark;</span>`
+const yep = `<span class="text-emerald-700">&checkmark;</span>`
+const nope = `<span class="text-slate-300 dark:text-slate-500">&checkmark;</span>`
 
 const hasReposts = data.reblogs_count > 0
 const hasReplies = data.replies_count > 0

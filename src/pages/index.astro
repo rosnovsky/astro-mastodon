@@ -1,11 +1,11 @@
 ---
 import Card from '../components/Card.astro'
 import "../../dist/output.css"
-import { convertMentionToApiUrl, convertResponseToData } from '../utils/convertors'
+import { convertMentionToApiUrl } from '../utils/convertors'
 import { mastodonEmbed } from '../mastodonEmbed'
-import { EmbedData, MastodonPost } from '../types'
+import { EmbedData } from '../types'
 
-const mastodonUrl = convertMentionToApiUrl("@rosnovsky@lounge.town:110969735983319283")
+const mastodonUrl = convertMentionToApiUrl("@molly0xfff@hachyderm.io :111992767176594967")
 
 const mastodonPost: EmbedData = await mastodonEmbed({ url: mastodonUrl! })
 
