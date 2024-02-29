@@ -1,7 +1,8 @@
 import { visit } from "unist-util-visit";
 import fs from "node:fs";
-import { mastodonCard } from "./components/MastodonCard.js";
+import React from "react";
 import { convertMentionToApiUrl } from "./utils/convertors.js";
+import { Card } from "./components/Card.jsx";
 
 export const remarkMastodonEmbed = () => {
   const urlsFile = fs.readFileSync(".urls.json", "utf8");
@@ -23,7 +24,7 @@ export const remarkMastodonEmbed = () => {
       );
       if (data) {
         if (!data.embedData) return node;
-        const html = mastodonCard(data.embedData);
+        const html = Card(data.embedData);
         const newNode = {
           type: "html",
           value: html,

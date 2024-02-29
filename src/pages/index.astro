@@ -1,16 +1,13 @@
 ---
-import Card from '../components/Card.astro'
+import { Card } from '../components/Card.jsx'
 import "../../dist/output.css"
-import { convertMentionToApiUrl } from '../utils/convertors'
-import { mastodonEmbed } from '../mastodonEmbed'
-import { EmbedData } from '../types'
+import { convertMentionToApiUrl } from '../utils/convertors.js'
+import { mastodonEmbed } from '../mastodonEmbed.js'
+import { EmbedData } from '../types.js'
 
-const mastodonUrl = convertMentionToApiUrl("@molly0xfff@hachyderm.io :111992767176594967")
+const mastodonUrl = convertMentionToApiUrl("@rosnovsky@lounge.town:110969735983319283")
 
 const mastodonPost: EmbedData = await mastodonEmbed({ url: mastodonUrl! })
-
-console.log(mastodonPost)
-
 
 type Props = {
     accountUrl: string;
@@ -28,8 +25,9 @@ type Props = {
 }
 
 ---
-<div class="grid min-h-screen h-full place-items-center bg-gray-300">
+  
+<div class="dark grid min-h-screen h-full place-items-center bg-gray-300">
   <div class="grid h-screen place-items-center bg-gray-300">
     <Card data={mastodonPost} />
-  </div> 
+  </div>
 </div>

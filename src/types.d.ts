@@ -141,7 +141,7 @@ export interface MastodonPost {
   poll: MastodonPoll | null;
 }
 
-interface EmbedData {
+export interface EmbedData {
   content: string;
   url: string;
   created_at: string;
