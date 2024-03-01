@@ -30,7 +30,7 @@ export const Content = ({ data }: Props) => {
   const content = sanitize(data.content, {
     allowedTags: ["p", "a", "b", "i", "em", "strong", "br", "code", "pre"],
     allowedAttributes: {
-      a: ["href"],
+      a: ["href", "rel", "target"],
     },
   });
 
