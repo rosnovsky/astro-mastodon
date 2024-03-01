@@ -1,5 +1,5 @@
 ---
-import { Card } from '../components/Card.jsx'
+import { CardComponent } from '../components/Card.jsx'
 import "../../dist/output.css"
 import { convertMentionToApiUrl } from '../utils/convertors.js'
 import { mastodonEmbed } from '../mastodonEmbed.js'
@@ -28,6 +28,6 @@ type Props = {
   
 <div class="dark grid min-h-screen h-full place-items-center bg-gray-300">
   <div class="grid h-screen place-items-center bg-gray-300">
-    <Card data={mastodonPost} />
+    <CardComponent data={mastodonPost} />
   </div>
 </div>

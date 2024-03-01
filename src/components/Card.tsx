@@ -22,7 +22,7 @@ type Props = {
   };
 };
 
-const CardComponent = ({ data }: Props) => {
+export const CardComponent = ({ data }: Props) => {
   return (
     <aside className="min-w-72 max-w-2xl w-full sm:w-2xl mx-auto card">
       <div className="w-full h-full flex items-center justify-center sm:p-5 p-0">
