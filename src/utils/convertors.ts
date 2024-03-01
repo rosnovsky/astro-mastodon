@@ -32,6 +32,7 @@ export const convertResponseToData = (
     account,
     media_attachments,
     card,
+    emojis,
   } = response;
   const { url: accountUrl, username, display_name, avatar } = account;
 
@@ -48,6 +49,7 @@ export const convertResponseToData = (
     avatar,
     media_attachments,
     card,
+    emojis,
   };
 };
 

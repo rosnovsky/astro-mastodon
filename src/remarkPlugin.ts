@@ -2,7 +2,7 @@ import { visit } from "unist-util-visit";
 import fs from "node:fs";
 import React from "react";
 import { convertMentionToApiUrl } from "./utils/convertors.js";
-import { Card } from "./components/Card.jsx";
+import { Card } from "./components/Card.js";
 
 export const remarkMastodonEmbed = () => {
   const urlsFile = fs.readFileSync(".urls.json", "utf8");

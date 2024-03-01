@@ -1,13 +1,23 @@
 ---
-import { CardComponent } from '../components/Card.jsx'
+import { CardComponent } from '../components/Card.js'
 import "../../dist/output.css"
 import { convertMentionToApiUrl } from '../utils/convertors.js'
 import { mastodonEmbed } from '../mastodonEmbed.js'
 import { EmbedData } from '../types.js'
+import { demoPosts } from '../utils/demoPosts.js'
+import { SwitchComponent } from '../components/Switch.jsx'
 
-const mastodonUrl = convertMentionToApiUrl("@rosnovsky@lounge.town:110969735983319283")
+const mastodonUrls = demoPosts.reduce((acc, post) => {
+  const url = convertMentionToApiUrl(post)
+  if(!url) return acc
+  
+  acc.push(url)
+  return acc
+}, [] as string[])
 
-const mastodonPost: EmbedData = await mastodonEmbed({ url: mastodonUrl! })
+
+const mastodonPosts = mastodonUrls.map(async (url) => await mastodonEmbed({ url }))
+const posts = await Promise.all(mastodonPosts)
 
 type Props = {
     accountUrl: string;
@@ -22,12 +32,25 @@ type Props = {
     url: string;
     media_attachments: EmbedData["media_attachments"];
     card: EmbedData["card"];
+    emojis: EmbedData["emojis"];
 }
 
 ---
-  
-<div class="dark grid min-h-screen h-full place-items-center bg-gray-300">
-  <div class="grid h-screen place-items-center bg-gray-300">
-    <CardComponent data={mastodonPost} />
-  </div>
-</div>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-type" content="application/json; charset=utf-8" />
+    <title>Astro Mastodon</title>
+  </head>
+  <body>
+    <div class="grid place-items-center bg-gray-300 dark:bg-slate-800">
+      <div class="grid place-items-center mt-5">
+        <SwitchComponent client:load />
+        {posts.map(post => (
+        <CardComponent data={post} />
+        ))}
+      </div>
+    </div>
+  </body>
+</html>

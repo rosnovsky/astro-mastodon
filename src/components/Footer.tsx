@@ -16,7 +16,7 @@ export const Footer = ({ data }: Props) => {
   });
 
   const yep = `<span class="text-emerald-700">&checkmark;</span>`;
-  const nope = `<span class="text-slate-300 dark:text-slate-500">&checkmark;</span>`;
+  const nope = `<span class="text-slate-300 dark:text-slate-500">&cross;</span>`;
 
   const hasReposts = data.reblogs_count > 0;
   const hasReplies = data.replies_count > 0;

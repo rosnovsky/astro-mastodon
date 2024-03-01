@@ -1,6 +1,6 @@
 {
   "name": "astro-mastodon",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "🐘 🚀 Mastodon embeds and mentions for Astro websites",
   "main": "./dist/index.js",
   "type": "module",
@@ -47,10 +47,14 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.5.5",
+    "@astrojs/react": "^3.0.10",
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
+    "@headlessui/react": "^1.7.18",
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
+    "@types/sanitize-html": "^2.11.0",
     "astro": "^4.4.4",
     "commitizen": "^4.3.0",
     "concurrently": "^8.2.2",
@@ -58,6 +62,9 @@
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
     "prettier": "3.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sanitize-html": "^2.12.1",
     "standard-version": "^9.5.0",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
@@ -72,13 +79,7 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
-    "@astrojs/react": "^3.0.10",
-    "@types/react-dom": "^18.2.19",
-    "@types/sanitize-html": "^2.11.0",
     "fast-glob": "^3.3.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sanitize-html": "^2.12.1",
     "unist-util-visit": "^5.0.0"
   },
   "peerDependencies": {

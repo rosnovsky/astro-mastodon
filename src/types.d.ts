@@ -2,7 +2,7 @@ interface MastodonEmbedOptions {
   url: string;
 }
 
-interface MediaAttachment {
+export interface MediaAttachment {
   id: string;
   type: "image" | "video" | "gifv" | "unknown";
   url: string;
@@ -29,6 +29,7 @@ interface MediaAttachment {
   };
   description: string;
   blurhash: string;
+  html: string;
 }
 
 interface MastodonPoll {
@@ -154,4 +155,5 @@ export interface EmbedData {
   avatar: string;
   media_attachments: MediaAttachment[] | null;
   card: MediaCard | null;
+  emojis: any;
 }

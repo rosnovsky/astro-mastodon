@@ -1,5 +1,5 @@
 import { EmbedData } from "../types.js";
-import { MastodonLogo } from "./MastodonLogo.jsx";
+import { MastodonLogo } from "./MastodonLogo.js";
 import React from "react";
 
 type Props = {
