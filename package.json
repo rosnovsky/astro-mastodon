@@ -60,12 +60,8 @@
     "concurrently": "^8.2.2",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
-    "isomorphic-dompurify": "^2.4.0",
     "lint-staged": "^15.2.2",
     "prettier": "3.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sanitize-html": "^2.12.1",
     "standard-version": "^9.5.0",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
@@ -80,8 +76,12 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
+    "isomorphic-dompurify": "^2.4.0",
     "fast-glob": "^3.3.2",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sanitize-html": "^2.12.1"
   },
   "peerDependencies": {
     "astro": "^4.0.0"
