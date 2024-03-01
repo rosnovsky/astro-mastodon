@@ -9,7 +9,6 @@ export function SwitchComponent() {
   const [enabled, setEnabled] = useState(false);
 
   function handleChange() {
-    console.log(!enabled);
     setEnabled(!enabled);
     document.body.classList.toggle("dark");
   }

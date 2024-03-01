@@ -15,6 +15,7 @@ const VideoComponent = ({ media }: { media: MediaAttachment }) => {
       src={media.url}
       typeof="video/mp4"
       autoPlay
+      muted
       playsInline
       loop
     />
@@ -22,7 +23,10 @@ const VideoComponent = ({ media }: { media: MediaAttachment }) => {
 };
 
 const isYoutube = (url: string) => {
-  return url.startsWith("https://www.youtube.com/");
+  const youtubeRegex =
+    /^(https?:\/\/)?(www\.)?(youtube\.com\/(embed\/|shorts\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]+)/;
+
+  return youtubeRegex.test(url);
 };
 
 const ImageComponent = ({ media }: { media: MediaAttachment }) => {
@@ -61,7 +65,12 @@ export const Media = ({ attachments, card }: Props) => {
         } gap-4`}
       >
         {attachments?.map((media) => (
-          <a href={media.url} target="_blank" key={media.id}>
+          <a
+            href={media.url}
+            target="_blank"
+            key={media.id}
+            rel="noopener noreferrer"
+          >
             {media.type === "gifv" ? (
               <VideoComponent media={media} />
             ) : (
@@ -74,6 +83,8 @@ export const Media = ({ attachments, card }: Props) => {
         <a
           className="no-underline rounded-md flex flex-col justify-between bg-violet-400 bg-opacity-30 dark:bg-violet-500 dark:bg-opacity-30 bg-blend-multiply p-5 hover:text-inherit"
           href={card!.url}
+          rel="noopener noreferrer"
+          target="_blank"
         >
           {isYoutube(card.url) ? (
             <YoutubeComponent media={card} />
