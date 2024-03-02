@@ -13,8 +13,6 @@ type Props = {
 export const Content = ({ data }: Props) => {
   const cleanHtml = convertPostContentToHTML(data.content);
 
-  console.log(cleanHtml, data.emojis);
-
   const cleanHtmlWithEmojis = convertCustomEmojisToImages(
     cleanHtml,
     data.emojis,
