@@ -21,7 +21,7 @@ export const Content = ({ data }: Props) => {
   return (
     <div className="w-full my-6">
       <div
-        className="prose"
+        className="text-md text-slate-800 dark:text-slate-200"
         dangerouslySetInnerHTML={{
           __html: cleanHtmlWithEmojis,
         }}
