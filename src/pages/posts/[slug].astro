@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import "astro-mastodon/dist/output.css"
+
+type Props = {
+  entry: any;
+};
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('posts');
+  return blogEntries.map((entry: any) => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+---
+
+<Content />

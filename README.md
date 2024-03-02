@@ -1,7 +1,5 @@
 # Astro Mastodon
 
-> Work in Progress
-
 Easily embed Mastodon posts into your Astro blog posts.
 
 ![Example in Dark Mode](./assets/example-dark.png)
@@ -13,19 +11,21 @@ Easily embed Mastodon posts into your Astro blog posts.
 Install the package:
 
 ```shell
-pnpx astro add astro-mastodon
+pnpm add astro-mastodon
 ```
 
 Update your `astro.config.mjs` file:
 
 ```js
 // Other imports
-import astroMastodon, { remarkMastodonEmbed } from "astro-mastodon";
+import { remarkMastodonEmbed } from "astro-mastodon";
 
 export default defineConfig({
   // ...
   markdown: {
-    remarkPlugins: [remarkMastodonEmbed],
+    remarkPlugins: [
+      remarkMastodonEmbed, // other plugins
+    ],
   },
   // ...
 });
@@ -67,6 +67,6 @@ Open `http://localhost:4321` and have fun!
 - [x] Embed posts in [plain `markdown` content](https://docs.astro.build/en/guides/markdown-content/)
 - [x] Embeds are generated at build time (no client-side JavaScript)
 - [x] Install `Astro Mastodon` as [Astro Integration](https://astro.build/integrations/) with `astro add`
-- [ ] Handle embedded images, video, audio, OpenGraph previews, etc.
+- [x] Handle embedded images, video, audio, OpenGraph previews, etc.
 - [ ] Embed profiles, polls, posts with media attachments
 - [ ] Embed other ActivityPub post types (PeerTube videos, BookWyrm books, Pixelfed photos, etc)
