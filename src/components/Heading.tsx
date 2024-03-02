@@ -6,6 +6,11 @@ type Props = {
   data: EmbedData;
 };
 
+/**
+ * This component is used to display the heading of a Mastodon post.
+ * @param data - The data to display in the heading.
+ * @returns A heading component for a Mastodon post.
+ */
 export const Heading = ({ data }: Props) => {
   return (
     <div className="w-full flex justify-between">
@@ -14,6 +19,7 @@ export const Heading = ({ data }: Props) => {
           href={data.accountUrl}
           target="_blank"
           className="no-underline justify-center"
+          rel="noopener noreferrer"
         >
           <div className="w-14 h-14 mx-auto">
             <img
@@ -29,6 +35,7 @@ export const Heading = ({ data }: Props) => {
           <a
             href={data.accountUrl}
             target="_blank"
+            rel="noopener noreferrer"
             className="no-underline text-center sm:text-left mx-auto sm:mx-0 hover:text-inherit"
           >
             <div className="mx-auto font-bold">{data.display_name}</div>

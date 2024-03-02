@@ -1,5 +1,6 @@
 // import { Image } from 'astro:assets'
 import { EmbedData, MediaAttachment } from "../types.js";
+import { validateYouTube } from "../utils/validators.js";
 import React from "react";
 
 type Props = {
@@ -7,6 +8,11 @@ type Props = {
   card: EmbedData["card"];
 };
 
+/**
+ * This component is used to display video and gifv attachments.
+ * @param media - The media attachment to display.
+ * @returns A video element if the media is a gifv or video, or null if the media is not a gifv or video.
+ */
 const VideoComponent = ({ media }: { media: MediaAttachment }) => {
   if (!media) return null;
   return (
@@ -22,15 +28,14 @@ const VideoComponent = ({ media }: { media: MediaAttachment }) => {
   );
 };
 
-const isYoutube = (url: string) => {
-  const youtubeRegex =
-    /^(https?:\/\/)?(www\.)?(youtube\.com\/(embed\/|shorts\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]+)/;
-
-  return youtubeRegex.test(url);
-};
-
+/**
+ * This component is used to display image attachments.
+ * @param media - The media attachment to display.
+ * @returns An image element.
+ */
 const ImageComponent = ({ media }: { media: MediaAttachment }) => {
   return (
+    // TODO: how can I use the `Image` component from Astro here?
     <img
       src={media.url}
       alt={media.description}
@@ -41,10 +46,15 @@ const ImageComponent = ({ media }: { media: MediaAttachment }) => {
   );
 };
 
-const YoutubeComponent = ({ media }: { media: EmbedData["card"] }) => {
-  if (!media) return null;
+/**
+ * This component is used to display YouTube cards.
+ * @param {EmbedData["card"]} card - The card to display.
+ * @returns An iframe element if the card is a YouTube video, or null if the card is not a YouTube video.
+ */
+const YoutubeComponent = ({ card }: { card: EmbedData["card"] }) => {
+  if (!card) return null;
 
-  const embedId = media.url.split("/").pop();
+  const embedId = card.url.split("/").pop();
   if (!embedId) return null;
 
   return (
@@ -56,14 +66,31 @@ const YoutubeComponent = ({ media }: { media: EmbedData["card"] }) => {
   );
 };
 
+/* NOTE: 
+
+Attachments are files uploaded by users directly to their instance (images, videos, audio, etc) 
+
+Cards are embedded content from other websites (like YouTube, opengraph, etc) 
+
+A post can have multiple attachments and at most one card
+*/
+
+/**
+ * This component is used to display media attachments and cards in a Mastodon post.
+ * @param attachments - The media attachments to display.
+ * @param card - The card to display.
+ * @returns A media component for a Mastodon post.
+ */
 export const Media = ({ attachments, card }: Props) => {
   return (
     <div>
       <div
+        // TODO: this is bad. It should be a nice masonry layout.
         className={`hover:text-inherit w-full my-5 grid ${
           attachments!.length > 1 ? "grid-cols-2" : "grid-cols-1"
         } gap-4`}
       >
+        {/* TODO: I hate these conditionals, here and below at `card`. Gotta move them out and replace with a maintainable component */}
         {attachments?.map((media) => (
           <a
             href={media.url}
@@ -86,8 +113,8 @@ export const Media = ({ attachments, card }: Props) => {
           rel="noopener noreferrer"
           target="_blank"
         >
-          {isYoutube(card.url) ? (
-            <YoutubeComponent media={card} />
+          {validateYouTube(card.url) ? (
+            <YoutubeComponent card={card} />
           ) : (
             <>
               {card.image && (

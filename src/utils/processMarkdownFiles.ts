@@ -1,7 +1,9 @@
-import { mastodonEmbed } from "../mastodonEmbed.js";
 import fs from "node:fs";
 import fg from "fast-glob";
-import { convertMentionToApiUrl } from "./convertors.js";
+import {
+  convertMentionToApiUrl,
+  convertAPIUrlToEmbedData,
+} from "./convertors.js";
 
 /**
  * Processes markdown files, extracts all Mastodon mentions (`@username@instance.domain:postId`), fetches embed data for each mention, and then writes the extracted URLs and their embed data to a JSON file.
@@ -38,7 +40,7 @@ export const processMarkdownFiles = async (): Promise<void> => {
 
     const urlsToFetch = JSON.parse(fs.readFileSync(".urls.json", "utf8"));
     for (let item of urlsToFetch) {
-      const data = await mastodonEmbed({ url: item.url });
+      const data = await convertAPIUrlToEmbedData({ url: item.url });
       item.embedData = data;
     }
     fs.writeFileSync(".urls.json", JSON.stringify(urlsToFetch, null, 2));

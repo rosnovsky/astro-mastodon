@@ -76,12 +76,11 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
-    "isomorphic-dompurify": "^2.4.0",
     "fast-glob": "^3.3.2",
-    "unist-util-visit": "^5.0.0",
+    "isomorphic-dompurify": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sanitize-html": "^2.12.1"
+    "unist-util-visit": "^5.0.0"
   },
   "peerDependencies": {
     "astro": "^4.0.0"

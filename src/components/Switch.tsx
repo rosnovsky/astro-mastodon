@@ -5,7 +5,11 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export function SwitchComponent() {
+/**
+ * This component is used to toggle dark mode.
+ * @returns A switch component that toggles dark mode.
+ */
+export const SwitchComponent = () => {
   const [enabled, setEnabled] = useState(false);
 
   function handleChange() {
@@ -38,4 +42,4 @@ export function SwitchComponent() {
       </Switch.Label>
     </Switch.Group>
   );
-}
+};

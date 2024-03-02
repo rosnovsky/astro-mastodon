@@ -1,8 +1,7 @@
 ---
 import { CardComponent } from '../components/Card.js'
 import "../../dist/output.css"
-import { convertMentionToApiUrl } from '../utils/convertors.js'
-import { mastodonEmbed } from '../mastodonEmbed.js'
+import { convertMentionToApiUrl, convertAPIUrlToEmbedData } from '../utils/convertors.js'
 import { EmbedData } from '../types.js'
 import { demoPosts } from '../utils/demoPosts.js'
 import { SwitchComponent } from '../components/Switch.jsx'
@@ -16,7 +15,7 @@ const mastodonUrls = demoPosts.reduce((acc, post) => {
 }, [] as string[])
 
 
-const mastodonPosts = mastodonUrls.map(async (url) => await mastodonEmbed({ url }))
+const mastodonPosts = mastodonUrls.map(async (url) => await convertAPIUrlToEmbedData({ url }))
 const posts = await Promise.all(mastodonPosts)
 
 type Props = {
@@ -48,7 +47,7 @@ type Props = {
       <div class="grid place-items-center mt-5">
         <SwitchComponent client:load />
         {posts.map(post => (
-        <CardComponent data={post} />
+          <CardComponent data={post} />
         ))}
       </div>
     </div>

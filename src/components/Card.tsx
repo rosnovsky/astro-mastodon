@@ -4,7 +4,6 @@ import { Content } from "./Content.js";
 import { Heading } from "./Heading.js";
 import { Footer } from "./Footer.js";
 import { renderToString } from "react-dom/server";
-import { SwitchComponent } from "./Switch.js";
 
 type Props = {
   data: {

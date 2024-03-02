@@ -17,3 +17,15 @@ export const validateMastodon = async (url: string): Promise<boolean> => {
     return false;
   }
 };
+
+/**
+ * Function that validates YouTube URLs.
+ * @param url - The URL to validate.
+ * @returns `true` if the URL is a valid YouTube URL and `false` otherwise.
+ */
+export const validateYouTube = (url: string): boolean => {
+  const youtubeRegex =
+    /^(https?:\/\/)?(www\.)?(youtube\.com\/(embed\/|shorts\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]+)/;
+
+  return youtubeRegex.test(url);
+};

@@ -1,19 +1,13 @@
 import { EmbedData } from "../types.js";
 import React from "react";
+import { convertDateToLocalString } from "../utils/convertors.js";
 
 type Props = {
   data: EmbedData;
 };
 
 export const Footer = ({ data }: Props) => {
-  const date = new Date(data.created_at).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: false,
-  });
+  const date = convertDateToLocalString(data.created_at);
 
   const yep = `<span class="text-emerald-700">&checkmark;</span>`;
   const nope = `<span class="text-slate-300 dark:text-slate-500">&cross;</span>`;
@@ -49,6 +43,7 @@ export const Footer = ({ data }: Props) => {
             className="text-center sm:text-right underline"
             href={data.url}
             target="_blank"
+            rel="noopener noreferrer"
           >
             {date}
           </a>
