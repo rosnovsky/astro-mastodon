@@ -1,5 +1,4 @@
 {
-  // "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
@@ -19,13 +18,16 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "jsx": "react"
+    "jsx": "react",
+    "allowJs": true
   },
   "ts-node": {
-    "esm": true
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "transpileOnly": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules", "**/*.test.ts", "dist"],
+  "include": ["src/utils/*.ts", "src/components/*.tsx", "src/*.ts"],
+  "exclude": ["node_modules", "**/*.test.ts", "dist", "src/content/config.ts"],
   "paths": {
     "@/*": ["src/*"]
   }

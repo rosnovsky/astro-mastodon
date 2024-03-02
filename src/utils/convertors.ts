@@ -108,7 +108,7 @@ export const convertCustomEmojisToImages = (
 ) => {
   if (!emojis) return content;
 
-  const sanitizedEmojis = emojis.map((emoji: EmbedData["emojis"]) => ({
+  const sanitizedEmojis = emojis.map((emoji) => ({
     ...emoji,
     shortcode: DOMPurify.sanitize(emoji.shortcode),
   }));

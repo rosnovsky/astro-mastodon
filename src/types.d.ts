@@ -103,6 +103,13 @@ interface MediaCard {
   blurhash?: string;
 }
 
+interface Emoji {
+  shortcode: string;
+  url: string;
+  static_url: string;
+  visible_in_picker: boolean;
+}
+
 export interface MastodonPost {
   id: string;
   created_at: string;
@@ -137,7 +144,7 @@ export interface MastodonPost {
     name: string;
     url: string;
   }[];
-  emojis: string[];
+  emojis: Emoji[] | null;
   card: MediaCard | null;
   poll: MastodonPoll | null;
 }
@@ -155,5 +162,5 @@ export interface EmbedData {
   avatar: string;
   media_attachments: MediaAttachment[] | null;
   card: MediaCard | null;
-  emojis: any;
+  emojis: Emoji[] | null;
 }

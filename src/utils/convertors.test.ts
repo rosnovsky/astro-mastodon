@@ -5,12 +5,12 @@ import {
   convertCustomEmojisToImages,
   convertDateToLocalString,
   convertMentionToApiUrl,
-} from "./convertors.js";
-import { mastodonPostGuns } from "./fixtures.js";
+} from "./convertors";
+import { mastodonPostGuns } from "./fixtures";
 
-describe("convertors", (t) => {
-  test("convertMentionToApiUrl", async (t) => {
-    t.test("should return a URL string", () => {
+describe("convertors", async () => {
+  await test("convertMentionToApiUrl", async (t) => {
+    await t.test("should return a URL string", () => {
       const mention = "@rosnovsky@lounge.town:109860863149734322";
 
       const apiUrl = convertMentionToApiUrl(mention);
@@ -84,11 +84,12 @@ describe("convertors", (t) => {
   });
 
   test("convertAPIUrlToEmbedData", async (t) => {
-    await t.test("should return embed data for a Mastodon post", async () => {
+    await t.test("should return embed data for a Mastodon post", async (t) => {
+      const convertAPIUrlToEmbedDataMock = t.mock.fn(convertAPIUrlToEmbedData);
+
       const url = "https://lounge.town/api/v1/statuses/109860863149734322";
 
-      // TODO: Mock this.
-      const embedData = await convertAPIUrlToEmbedData({ url });
+      const embedData = await convertAPIUrlToEmbedDataMock({ url });
 
       assert.equal(embedData.avatar, mastodonPostGuns.avatar);
     });
