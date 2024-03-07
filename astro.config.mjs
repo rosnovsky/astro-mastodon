@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 
-import { remarkMastodonEmbed } from "astro-mastodon";
+import { remarkMastodonEmbed } from "./dist/index.js";
 
 // https://astro.build/config
 export default defineConfig({

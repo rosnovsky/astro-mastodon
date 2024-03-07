@@ -23,8 +23,9 @@
     "node": ">=20.5.1"
   },
   "scripts": {
-    "build": "npx tailwindcss -i ./src/global.css -o ./dist/output.css && tsc",
-    "dev": "concurrently \"npx tailwindcss -i ./src/global.css -o ./dist/output.css -w\" \"tsc -w\" \"astro dev --host\"",
+    "build": "npx tailwindcss -i ./src/global.css -o ./dist/output.css  && tsc",
+    "build:local": "npx tailwindcss -i ./src/global.css -o ./src/output.css && tsc",
+    "dev": "concurrently \"npx tailwindcss -i ./src/global.css -o ./output.css -w\" \"tsc -w\" \"astro dev --host\"",
     "dev:astro": "astro dev --host",
     "commit": "cz",
     "release": "standard-version",
@@ -57,6 +58,7 @@
     "@types/react-dom": "^18.2.19",
     "@types/sanitize-html": "^2.11.0",
     "astro": "^4.4.8",
+    "astro-mastodon": "file:../",
     "commitizen": "^4.3.0",
     "concurrently": "^8.2.2",
     "cz-conventional-changelog": "^3.3.0",
@@ -66,7 +68,6 @@
     "standard-version": "^9.5.0",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
-    "astro-mastodon": "^0.2.8",
     "typescript": "^5.3.3"
   },
   "config": {
@@ -78,6 +79,7 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "fast-glob": "^3.3.2",
     "isomorphic-dompurify": "^2.4.0",
     "react": "^18.2.0",

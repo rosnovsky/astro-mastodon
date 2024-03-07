@@ -106,37 +106,29 @@ export const Media = ({ attachments, card }: Props) => {
           </a>
         ))}
       </div>
-      {card && (
-        <a
-          className="no-underline rounded-md flex flex-col justify-between bg-violet-400 bg-opacity-30 dark:bg-violet-500 dark:bg-opacity-30 bg-blend-multiply p-5 hover:text-inherit"
-          href={card!.url}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          {validateYouTube(card.url) ? (
-            <YoutubeComponent card={card} />
-          ) : (
-            <>
-              {card.image && (
-                <img
-                  src={card.image}
-                  alt={card.title || card.description || ""}
-                  className="w-full"
-                  width={100}
-                  height={100}
-                />
-              )}
-              <h1 className="text-xl font-bold text-slate-800 dark:text-slate-300 hover:text-inherit">
-                {card!.title}
-              </h1>
-              <p className="prose hover:text-inherit">{card!.description}</p>
+      {card &&
+        (validateYouTube(card.url) ? (
+          <YoutubeComponent card={card} />
+        ) : (
+          <div className="card-media">
+            {card.image && (
+              <img
+                src={card.image}
+                alt={card.title || card.description || ""}
+                className="w-full"
+                width={52}
+                height={52}
+              />
+            )}
+            <a href={card.url} rel="noopener noreferrer" target="_blank">
+              <h3>{card!.title}</h3>
+              <p className="hover:text-inherit">{card!.description}</p>
               <p className="text-right text-sm text-slate-400 hover:text-inherit">
                 {card!.provider_name}
               </p>
-            </>
-          )}
-        </a>
-      )}
+            </a>
+          </div>
+        ))}
     </div>
   );
 };

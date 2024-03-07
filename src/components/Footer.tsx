@@ -9,7 +9,7 @@ type Props = {
 export const Footer = ({ data }: Props) => {
   const date = convertDateToLocalString(data.created_at);
 
-  const yep = `<span class="text-emerald-700">&checkmark;</span>`;
+  const yep = `<span class="text-violet-700">&checkmark;</span>`;
   const nope = `<span class="text-slate-300 dark:text-slate-500">&cross;</span>`;
 
   const hasReposts = data.reblogs_count > 0;
@@ -21,7 +21,7 @@ export const Footer = ({ data }: Props) => {
   const favs = `${hasFavs ? `${yep} favs` : `${nope} favs`}`;
 
   return (
-    <div className="w-full align-baseline">
+    <div className="card-footer">
       <div className="flex w-full justify-between text-xs align-baseline text-slate-600 dark:text-slate-400 ">
         <div className="w-48 flex justify-between">
           <span
@@ -40,7 +40,7 @@ export const Footer = ({ data }: Props) => {
         <div>
           Posted on{" "}
           <a
-            className="text-center sm:text-right underline"
+            className=""
             href={data.url}
             target="_blank"
             rel="noopener noreferrer"

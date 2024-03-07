@@ -1,10 +1,10 @@
 ---
 import { CardComponent } from '../components/Card.js'
-import "../../dist/output.css"
 import { convertMentionToApiUrl, convertAPIUrlToEmbedData } from '../utils/convertors.js'
 import { EmbedData } from '../types.js'
 import { demoPosts } from '../utils/demoPosts.js'
 import { SwitchComponent } from '../components/Switch.jsx'
+import "../../output.css"
 
 const mastodonUrls = demoPosts.reduce((acc, post) => {
   const url = convertMentionToApiUrl(post)

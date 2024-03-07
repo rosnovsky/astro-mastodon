@@ -13,12 +13,12 @@ type Props = {
  */
 export const Heading = ({ data }: Props) => {
   return (
-    <div className="w-full flex justify-between">
-      <div className="flex flex-col sm:flex-row justify-center w-full no-underline">
+    <div className="card-heading">
+      <div className="card-title">
         <a
           href={data.accountUrl}
           target="_blank"
-          className="no-underline justify-center"
+          className="no-underline"
           rel="noopener noreferrer"
         >
           <div className="w-14 h-14 mx-auto">
@@ -27,7 +27,7 @@ export const Heading = ({ data }: Props) => {
               alt={data.display_name}
               width="100"
               height="100"
-              className="border-2 border-violet-700 object-cover w-full rounded-full"
+              className="border-2 m-0 border-violet-700 object-cover w-full rounded-full"
             />
           </div>
         </a>
