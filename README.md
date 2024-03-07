@@ -1,31 +1,37 @@
 # Astro Mastodon
 
-> Work in Progress
-
-Easily embed Mastodon posts (and eventually other ActivityPub posts) into your Astro blog posts.
+Easily embed Mastodon posts into your Astro blog posts.
 
 ![Example in Dark Mode](./assets/example-dark.png)
 
-![Example in Light Mode](./assets/example-light.png)
+## Features
+
+- Works with `.md`, `.mdx` and `.astro` files
+- Embed posts from Mastodon (other ActivityPub embeds are coming!)
+- Embed posts with plain text, images, link cards, videos, embedded YouTube players, gifs, and more!
+- No client-side JavaScript, cards are generated at build time
 
 ## How to use
 
 Install the package:
 
 ```shell
-pnpx astro add astro-mastodon
+pnpm add astro-mastodon
 ```
 
 Update your `astro.config.mjs` file:
 
 ```js
 // Other imports
-import astroMastodon, { remarkMastodonEmbed } from "astro-mastodon";
+import { remarkMastodonEmbed } from "astro-mastodon";
 
 export default defineConfig({
   // ...
   markdown: {
-    remarkPlugins: [remarkMastodonEmbed],
+    remarkPlugins: [
+      remarkMastodonEmbed,
+      // other plugins
+    ],
   },
   // ...
 });
@@ -49,12 +55,21 @@ The anatomy of the embed is as follows:
 
 `@username@instance.domain:postId`
 
-## Features
+## Development
 
-- [x] Embed Mastodon posts in any Astro component
-- [x] Embed Mastodon posts in `mdx` [content](https://docs.astro.build/en/guides/content-collections/) files
-- [x] Embeds are generated at build time (no client-side JavaScript)
-- [x] Install Astro Mastodon as [Astro Integration](https://astro.build/integrations/) with `astro add`
-- [ ] Embed profiles, polls, posts with media attachments
-- [x] Embed all of the above in [plain `markdown` content](https://docs.astro.build/en/guides/markdown-content/)
-- [ ] Embed other ActivityPub post types (PeerTube videos, BookWyrm books, Pixelfed photos, etc)
+Clone the repo and run
+
+```sh
+pnpm i
+pnpm dev
+```
+
+Open `http://localhost:4321` and have fun!
+
+## Screenshots
+
+![Example in Light Mode](./assets/example-light.png)
+
+![Example with photos](./assets/example-photos.png)
+
+![Example in Light Mode](./assets/example-with-link-card.png)

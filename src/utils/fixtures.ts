@@ -280,3 +280,21 @@ const mastodonPostWithCard = {
   },
   poll: null,
 };
+
+export const mastodonPostGuns = {
+  content:
+    '<p><a href="https://lounge.town/tags/BanGuns" class="mention hashtag" rel="tag">#<span>BanGuns</span></a>, like, fucking all of them. Repeal the Second Amendment. Stop this madness.</p><p><a href="https://lounge.town/tags/MassShooting" class="mention hashtag" rel="tag">#<span>MassShooting</span></a> <a href="https://lounge.town/tags/Michigan" class="mention hashtag" rel="tag>#<span>Michigan</span></a> <a href="https://lounge.town/tags/MSU" class="mention hashtag" rel="tag">#<span>MSU</span></a> <a href="https://lounge.town/tags/EastLansing" class="mention hashtag" rel="tag">#<span>EastLansing</span></a></p>',
+  url: "https://lounge.town/@rosnovsky/109860863149734322",
+  created_at: "2023-02-14T03:02:17.032Z",
+  favourites_count: 26,
+  replies_count: 2,
+  reblogs_count: 21,
+  accountUrl: "https://lounge.town/@rosnovsky",
+  username: "rosnovsky",
+  display_name: "Art Rosnovsky",
+  avatar:
+    "https://s3.us-west-1.wasabisys.com/lounge-town/accounts/avatars/109/363/435/781/395/161/original/a5032cbee1588e41.jpeg",
+  media_attachments: [],
+  card: null,
+  emojis: [],
+};

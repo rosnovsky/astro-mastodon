@@ -2,7 +2,7 @@ interface MastodonEmbedOptions {
   url: string;
 }
 
-interface MediaAttachment {
+export interface MediaAttachment {
   id: string;
   type: "image" | "video" | "gifv" | "unknown";
   url: string;
@@ -29,6 +29,7 @@ interface MediaAttachment {
   };
   description: string;
   blurhash: string;
+  html: string;
 }
 
 interface MastodonPoll {
@@ -86,19 +87,27 @@ interface MastodonAccount {
 
 // This appears to be a "oEmbed" kind of card for YouTube and other media.
 interface MediaCard {
-  title: string;
-  description: string;
-  image: string;
+  url: string;
+  title?: string;
+  description?: string;
+  image?: string;
   type: string;
-  author_name: string;
-  author_url: string;
-  provider_name: string;
-  provider_url: string;
-  html: string;
-  width: number;
-  height: number;
-  embed_url: string;
-  blurhash: string;
+  author_name?: string;
+  author_url?: string;
+  provider_name?: string;
+  provider_url?: string;
+  html?: string;
+  width?: number;
+  height?: number;
+  embed_url?: string;
+  blurhash?: string;
+}
+
+interface Emoji {
+  shortcode: string;
+  url: string;
+  static_url: string;
+  visible_in_picker: boolean;
 }
 
 export interface MastodonPost {
@@ -135,12 +144,12 @@ export interface MastodonPost {
     name: string;
     url: string;
   }[];
-  emojis: string[];
+  emojis: Emoji[] | null;
   card: MediaCard | null;
   poll: MastodonPoll | null;
 }
 
-interface EmbedData {
+export interface EmbedData {
   content: string;
   url: string;
   created_at: string;
@@ -151,4 +160,7 @@ interface EmbedData {
   username: string;
   display_name: string;
   avatar: string;
+  media_attachments: MediaAttachment[] | null;
+  card: MediaCard | null;
+  emojis: Emoji[] | null;
 }

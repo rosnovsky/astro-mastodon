@@ -1,0 +1,55 @@
+---
+import { CardComponent } from '../components/Card.js'
+import { convertMentionToApiUrl, convertAPIUrlToEmbedData } from '../utils/convertors.js'
+import { EmbedData } from '../types.js'
+import { demoPosts } from '../utils/demoPosts.js'
+import { SwitchComponent } from '../components/Switch.jsx'
+import "../../dist/output.dev.css"
+
+const mastodonUrls = demoPosts.reduce((acc, post) => {
+  const url = convertMentionToApiUrl(post)
+  if(!url) return acc
+  
+  acc.push(url)
+  return acc
+}, [] as string[])
+
+
+const mastodonPosts = mastodonUrls.map(async (url) => await convertAPIUrlToEmbedData({ url }))
+const posts = await Promise.all(mastodonPosts)
+
+type Props = {
+    accountUrl: string;
+    avatar: string;
+    created_at: string;
+    display_name: string;
+    username: string;
+    content: string;
+    favourites_count: number;
+    reblogs_count: number;
+    replies_count: number;
+    url: string;
+    media_attachments: EmbedData["media_attachments"];
+    card: EmbedData["card"];
+    emojis: EmbedData["emojis"];
+}
+
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-type" content="application/json; charset=utf-8" />
+    <title>Astro Mastodon</title>
+  </head>
+  <body>
+    <div class="grid place-items-center bg-gray-300 dark:bg-slate-800">
+      <div class="grid place-items-center mt-5">
+        <SwitchComponent client:load />
+        {posts.map(post => (
+          <CardComponent data={post} />
+        ))}
+      </div>
+    </div>
+  </body>
+</html>

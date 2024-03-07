@@ -1,7 +1,7 @@
 {
   "name": "astro-mastodon",
-  "version": "0.2.3",
-  "description": "🐘 🚀 Mastodon embeds and mentions for Astro websites",
+  "version": "0.3.0",
+  "description": "🐘🚀 Mastodon embeds and mentions for Astro websites",
   "main": "./dist/index.js",
   "type": "module",
   "module": "./dist/index.js",
@@ -23,8 +23,10 @@
     "node": ">=20.5.1"
   },
   "scripts": {
-    "build": "npx tailwindcss -i ./src/global.css -o ./dist/output.css && tsc",
-    "dev": "concurrently \"npx tailwindcss -i ./src/global.css -o ./dist/output.css -w\" \"tsc -w\"",
+    "build:prod": "rm -rf ./dist && npx tailwindcss -i ./src/global.css -o ./dist/output.css  && tsc",
+    "build:dev": "npx tailwindcss -i ./src/global.dev.css -o ./dist/output.dev.css -w && tsc -w",
+    "dev": "concurrently \"npx tailwindcss -i ./src/global.dev.css -o ./dist/output.dev.css -w\" \"tsc -w\" \"astro dev --host\"",
+    "dev:astro": "astro dev --host",
     "commit": "cz",
     "release": "standard-version",
     "prepare": "husky install",
@@ -37,6 +39,8 @@
     "embeds",
     "mentions",
     "withastro",
+    "remark",
+    "remark-plugin",
     "astro-integration"
   ],
   "author": "Art Rosnovsky <art@rosnovsky.us>",
@@ -46,20 +50,26 @@
     "type": "git"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.3",
-    "@commitlint/config-conventional": "^18.4.3",
-    "@types/node": "^20.11.19",
-    "astro": "^4.4.4",
+    "@astrojs/check": "^0.5.6",
+    "@astrojs/react": "^3.0.10",
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3",
+    "@headlessui/react": "^1.7.18",
+    "@types/node": "^20.11.24",
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
+    "@types/sanitize-html": "^2.11.0",
+    "astro": "^4.4.8",
+    "astro-mastodon": "link:./",
     "commitizen": "^4.3.0",
     "concurrently": "^8.2.2",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.1.0",
-    "prettier": "3.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "3.2.5",
     "standard-version": "^9.5.0",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
-    "@astrojs/check": "^0.5.5",
     "typescript": "^5.3.3"
   },
   "config": {
@@ -71,7 +81,11 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "fast-glob": "^3.3.2",
+    "isomorphic-dompurify": "^2.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "unist-util-visit": "^5.0.0"
   },
   "peerDependencies": {
