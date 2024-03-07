@@ -1,6 +1,6 @@
 {
   "name": "astro-mastodon",
-  "version": "0.3.0-beta7",
+  "version": "0.3.0",
   "description": "🐘🚀 Mastodon embeds and mentions for Astro websites",
   "main": "./dist/index.js",
   "type": "module",
@@ -39,6 +39,8 @@
     "embeds",
     "mentions",
     "withastro",
+    "remark",
+    "remark-plugin",
     "astro-integration"
   ],
   "author": "Art Rosnovsky <art@rosnovsky.us>",

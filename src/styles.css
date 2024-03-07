@@ -35,6 +35,10 @@
     @apply text-violet-900 dark:text-violet-300 !important;
   }
 
+  .card-contents p {
+    @apply block my-3;
+  }
+
   .card-footer {
     @apply w-full align-baseline text-center sm:text-right mt-5 !important;
   }

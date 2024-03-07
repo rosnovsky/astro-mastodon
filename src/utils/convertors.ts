@@ -130,7 +130,7 @@ export const convertCustomEmojisToImages = (
  */
 export const convertPostContentToHTML = (content: string) =>
   DOMPurify.sanitize(content, {
-    ALLOWED_TAGS: ["a", "b", "i", "em", "strong", "br", "code", "pre"],
+    ALLOWED_TAGS: ["p", "a", "b", "i", "em", "strong", "br", "code", "pre"],
     ALLOWED_ATTR: ["href", "rel", "target"],
     ALLOW_ARIA_ATTR: true,
   });
