@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import "../dist/output.css"
+import "../../../dist/output.dev.css"
 
 type Props = {
   entry: any;
@@ -17,5 +17,9 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 
 ---
-
-<Content />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <Content />
+</html>

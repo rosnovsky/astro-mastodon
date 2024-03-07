@@ -4,7 +4,7 @@ import { convertMentionToApiUrl, convertAPIUrlToEmbedData } from '../utils/conve
 import { EmbedData } from '../types.js'
 import { demoPosts } from '../utils/demoPosts.js'
 import { SwitchComponent } from '../components/Switch.jsx'
-import "../../dist/output.css"
+import "../../dist/output.dev.css"
 
 const mastodonUrls = demoPosts.reduce((acc, post) => {
   const url = convertMentionToApiUrl(post)

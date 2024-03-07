@@ -1,0 +1,68 @@
+@layer components {
+  .card {
+    @apply isolate z-50 max-w-2xl mx-auto text-slate-800 dark:text-slate-200 h-full flex items-center justify-center sm:p-5 p-0 !important;
+  }
+
+  .card-content {
+    @apply w-full mx-auto rounded-lg border-2 dark:border-violet-300 border-violet-800 p-5 text-slate-800 bg-violet-100 bg-opacity-100  dark:bg-violet-950 dark:bg-opacity-90 bg-blend-darken dark:text-slate-200;
+  }
+
+  .card-heading {
+    @apply w-full flex justify-between no-underline  hover:text-inherit !important;
+  }
+
+  .card-title {
+    @apply flex flex-col sm:flex-row justify-center w-full text-center sm:text-left !important;
+  }
+
+  .card-title a {
+    @apply no-underline text-center sm:text-left text-slate-800 dark:text-slate-200 !important;
+  }
+
+  .card-title .user-info {
+    @apply pl-0 sm:pl-5;
+  }
+
+  .card-title img {
+    @apply rounded-full border-violet-900 !important;
+  }
+
+  .card-contents {
+    @apply text-inherit text-slate-800 dark:text-slate-200 !important;
+  }
+
+  .card-contents a {
+    @apply text-violet-900 dark:text-violet-300 !important;
+  }
+
+  .card-footer {
+    @apply w-full align-baseline text-center sm:text-right mt-5 !important;
+  }
+
+  .card-footer a {
+    @apply underline text-violet-900 dark:text-violet-300 hover:text-violet-700 dark:hover:text-violet-500  !important;
+  }
+
+  .card-media {
+    @apply rounded-md flex flex-col justify-between bg-violet-400 bg-opacity-30 dark:bg-violet-500 dark:bg-opacity-30 bg-blend-multiply p-5 mb-5 !important;
+  }
+
+  .card-media img {
+    @apply rounded-md mx-auto !important;
+  }
+
+  .card-media a {
+    @apply no-underline text-slate-900 dark:text-violet-300 !important;
+  }
+
+  .card-media h3 {
+    @apply font-bold py-5 no-underline text-2xl text-slate-800 dark:text-slate-100 !important;
+  }
+  .card-media > p {
+    @apply no-underline text-md text-slate-800 dark:text-slate-300 !important;
+  }
+
+  .mastodon-logo {
+    @apply hidden w-8 h-8 sm:block text-right text-violet-500 opacity-75 hover:opacity-100 hover:rotate-2;
+  }
+}

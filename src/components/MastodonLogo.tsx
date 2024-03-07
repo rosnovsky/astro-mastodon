@@ -5,7 +5,7 @@ import React from "react";
  * @returns A Mastodon logo.
  */
 export const MastodonLogo = () => (
-  <div className="hidden w-8 h-8 sm:block text-right text-violet-500 opacity-75 hover:opacity-100 hover:rotate-2">
+  <div className="mastodon-logo">
     <svg
       width="32px"
       height="32px"

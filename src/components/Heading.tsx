@@ -31,15 +31,15 @@ export const Heading = ({ data }: Props) => {
             />
           </div>
         </a>
-        <div className="w-full flex flex-col pl-0 sm:pl-3 mx-auto ">
+        <div className="user-info w-full flex flex-col pl-0 sm:pl-3 mx-auto ">
           <a
             href={data.accountUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="no-underline text-center sm:text-left mx-auto sm:mx-0 hover:text-inherit"
+            className="pl-0 sm:pl-3"
           >
             <div className="mx-auto font-bold">{data.display_name}</div>
-            <div className="mx-auto text-xs my-0">@{data.username}</div>
+            <div className="mx-auto text-sm my-0">@{data.username}</div>
           </a>
         </div>
       </div>

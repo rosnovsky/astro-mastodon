@@ -125,7 +125,7 @@ export const Media = ({ attachments, card }: Props) => {
               <p className="text-violet-900 dark:text-violet-100">
                 {card.description}
               </p>
-              <p className="text-right text-violet-900 mt-5 dark:text-violet-100">
+              <p className="text-sm text-right text-violet-900 mt-5 dark:text-violet-100">
                 {card.provider_name}
               </p>
             </a>
