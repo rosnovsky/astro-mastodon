@@ -747,7 +747,19 @@ video {
   color: rgb(196 181 253 / var(--tw-text-opacity)) !important;
 }
 
-.card-media > h3,
+.card-media > h3 {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+  --tw-text-opacity: 1 !important;
+  color: rgb(30 41 59 / var(--tw-text-opacity)) !important;
+  text-decoration-line: none !important;
+}
+
+:is(.dark .card-media > h3) {
+  --tw-text-opacity: 1 !important;
+  color: rgb(203 213 225 / var(--tw-text-opacity)) !important;
+}
+
 .card-media > p {
   font-size: 0.938rem !important;
   line-height: 1.5rem !important;
@@ -756,7 +768,6 @@ video {
   text-decoration-line: none !important;
 }
 
-:is(.dark .card-media > h3),
 :is(.dark .card-media > p) {
   --tw-text-opacity: 1 !important;
   color: rgb(203 213 225 / var(--tw-text-opacity)) !important;

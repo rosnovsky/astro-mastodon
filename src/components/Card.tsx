@@ -26,7 +26,7 @@ type Props = {
 export const CardComponent = ({ data }: Props) => {
   return (
     <>
-      <aside className="card w-3xl">
+      <aside className="card w-full">
         <div className="card-content">
           <Heading data={data} />
           <Content data={data} />

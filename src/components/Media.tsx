@@ -121,10 +121,12 @@ export const Media = ({ attachments, card }: Props) => {
               />
             )}
             <a href={card.url} rel="noopener noreferrer" target="_blank">
-              <h3>{card!.title}</h3>
-              <p className="hover:text-inherit">{card!.description}</p>
-              <p className="text-right text-sm text-slate-400 hover:text-inherit">
-                {card!.provider_name}
+              <h3>{card.title}</h3>
+              <p className="text-violet-900 dark:text-violet-100">
+                {card.description}
+              </p>
+              <p className="text-right text-violet-900 mt-5 dark:text-violet-100">
+                {card.provider_name}
               </p>
             </a>
           </div>

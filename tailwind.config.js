@@ -22,6 +22,16 @@ module.exports = {
       "8xl": ["6rem", { lineHeight: "1.125" }],
       "9xl": ["8rem", { lineHeight: "1" }],
     },
+    extend: {
+      colors: {
+        // Mastodon colors
+        violet: {
+          300: "#858AFA",
+          950: "#17063B",
+          900: "#2F0C7A",
+        },
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 };
