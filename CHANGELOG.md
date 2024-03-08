@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/rosnovsky/astro-mastodon/compare/v0.3.1...v0.3.2) (2024-03-08)
+
+### Bug Fixes
+
+- handle empty `display_name` ([#26](https://github.com/rosnovsky/astro-mastodon/issues/26)) ([03e96a5](https://github.com/rosnovsky/astro-mastodon/commit/03e96a595d5a242f7a4cd6a099e07e014b5706e9)), closes [#25](https://github.com/rosnovsky/astro-mastodon/issues/25)
+
 ### 0.3.1 (2024-03-07)
 
 ### Features
