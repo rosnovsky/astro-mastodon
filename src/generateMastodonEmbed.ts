@@ -33,6 +33,7 @@ export const generateMastodonEmbed = async ({
 
     return embedData;
   } catch (error) {
+    console.error("Error fetching Mastodon post", error);
     return null;
   }
 };
