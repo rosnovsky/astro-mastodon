@@ -15,10 +15,10 @@ export const convertResponseToData = (
     !response.account ||
     !response.account.url ||
     !response.account.username ||
-    !response.account.display_name ||
     !response.account.avatar ||
     !response.created_at
   ) {
+    console.error("Invalid Mastodon response", response);
     return null;
   }
 
@@ -34,7 +34,13 @@ export const convertResponseToData = (
     card,
     emojis,
   } = response;
-  const { url: accountUrl, username, display_name, avatar } = account;
+  const { url: accountUrl, username, avatar } = account;
+
+  // NOTE: sometimes instances return empty display_name, so we use the username as a fallback
+  let display_name = account.display_name;
+  if (!account.display_name) {
+    display_name = username;
+  }
 
   return {
     content,
