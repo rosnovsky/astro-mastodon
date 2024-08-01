@@ -50,7 +50,7 @@
     "type": "git"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.5.6",
+    "@astrojs/check": "^0.9.0",
     "@astrojs/react": "^3.0.10",
     "@commitlint/cli": "^19.0.3",
     "@commitlint/config-conventional": "^19.0.3",
